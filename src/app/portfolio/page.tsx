@@ -40,7 +40,6 @@ const projetosComImagens: ProjetoImagem[] = [
       { filename: 'foto18.jpg', title: 'Retrato em Externo' },
     ],
   },
-  
 ]
 
 const projetosComVideos: ProjetoVideo[] = [
@@ -48,7 +47,6 @@ const projetosComVideos: ProjetoVideo[] = [
     title: 'Clipe: Pivete do Trap',
     youtubeId: 'G4NT8T_BJbs',
   },
-  
 ]
 
 export default function Portfolio() {
@@ -72,12 +70,14 @@ export default function Portfolio() {
                 className="bg-neutral-900 p-4 rounded shadow-lg cursor-pointer hover:scale-[1.02] transition"
                 onClick={() => setOpenIndex(index)}
               >
-                <div className="relative w-full h-64 mb-4">
+                <div className="relative w-full h-64 mb-4 rounded overflow-hidden border border-yellow-400">
                   <Image
                     src={capa}
                     alt={`Capa do projeto ${project.title}`}
                     fill
-                    className="object-cover rounded"
+                    className="object-cover"
+                    placeholder="empty"
+                    // Se quiser blur placeholder, pode adicionar blurDataURL aqui
                   />
                 </div>
                 <h2 className="text-2xl font-semibold mb-2">{project.title}</h2>
@@ -101,13 +101,14 @@ export default function Portfolio() {
         <div className="grid md:grid-cols-2 gap-8">
           {projetosComVideos.map((video, index) => (
             <div key={index} className="bg-neutral-900 p-4 rounded shadow-lg">
-              <div className="relative w-full aspect-video mb-4">
+              <div className="relative w-full aspect-video mb-4 rounded overflow-hidden border border-yellow-400">
                 <iframe
                   className="w-full h-full rounded"
                   src={`https://www.youtube.com/embed/${video.youtubeId}`}
                   title={video.title}
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
+                  loading="lazy" // para ajudar no carregamento
                 />
               </div>
               <h3 className="text-2xl font-semibold">{video.title}</h3>

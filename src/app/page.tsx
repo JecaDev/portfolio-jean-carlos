@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { FaWhatsapp, FaInstagram, FaEnvelope } from 'react-icons/fa'
 
@@ -7,7 +8,6 @@ const email = 'jeanmacedo1302@gmail.com'
 
 export default function Home() {
   return (
-    
     <main className="bg-black text-white min-h-screen flex flex-col items-center justify-center px-6 py-16">
       {/* Hero Section */}
       <motion.div
@@ -26,16 +26,20 @@ export default function Home() {
         {/* Botões de contato */}
         <div className="flex justify-center gap-6 text-2xl">
           <a
-            href="https://wa.me/5571988601554" // coloque seu número aqui
+            href="https://wa.me/5571988601554"
             target="_blank"
+            rel="noopener noreferrer"
             className="text-green-500 hover:text-green-400 transition"
+            aria-label="WhatsApp"
           >
             <FaWhatsapp />
           </a>
           <a
-            href="https://instagram.com/gradedbyjean" // substitua aqui
+            href="https://instagram.com/gradedbyjean"
             target="_blank"
+            rel="noopener noreferrer"
             className="text-pink-500 hover:text-pink-400 transition"
+            aria-label="Instagram"
           >
             <FaInstagram />
           </a>
@@ -44,6 +48,7 @@ export default function Home() {
             target="_blank"
             rel="noopener noreferrer"
             className="text-yellow-400 hover:text-yellow-300 transition"
+            aria-label="Email"
           >
             <FaEnvelope />
           </a>
@@ -65,10 +70,14 @@ export default function Home() {
         transition={{ delay: 0.5, duration: 0.8 }}
         className="mt-16 w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-yellow-400 shadow-xl"
       >
-        <img
+        <Image
           src="/JeanCarlos.jpg"
           alt="Jean Macêdo"
-          className="object-cover w-full h-full"
+          width={320}   // md:w-80 == 320px, ajustei para corresponder
+          height={320}
+          className="object-cover rounded-full"
+          priority  // carrega rápido pois é a imagem principal
+          placeholder="empty" // para usar blur, precisa de uma base64; sem ela, use "empty"
         />
       </motion.div>
     </main>
