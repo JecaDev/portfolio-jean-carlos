@@ -4,8 +4,6 @@ import Image from 'next/image'
 import { useState } from 'react'
 import Lightbox from 'yet-another-react-lightbox'
 import 'yet-another-react-lightbox/styles.css'
-import 'keen-slider/keen-slider.min.css'
-import { useKeenSlider } from 'keen-slider/react'
 
 type ProjetoImagem = {
   title: string
@@ -20,26 +18,48 @@ type ProjetoVideo = {
 
 const projetosComImagens: ProjetoImagem[] = [
   {
-    title: 'Retratos',
+    title: 'Retratos em Estúdio',
     folder: '/projetos/retrato/',
     images: [
       { filename: 'foto1.jpg', title: 'Retrato em Estúdio' },
-      { filename: 'foto3.jpg', title: 'Retrato em Externo' },
-      { filename: 'foto4.jpg', title: 'Retrato em Externo' },
-      { filename: 'foto5.jpg', title: 'Retrato em Externo' },
-      { filename: 'foto6.jpg', title: 'Retrato em Externo' },
-      { filename: 'foto7.jpg', title: 'Retrato em Externo' },
-      { filename: 'foto8.jpg', title: 'Retrato em Externo' },
-      { filename: 'foto9.jpg', title: 'Retrato em Externo' },
-      { filename: 'foto10.jpg', title: 'Retrato em Externo' },
-      { filename: 'foto11.jpg', title: 'Retrato em Externo' },
-      { filename: 'foto12.jpg', title: 'Retrato em Externo' },
-      { filename: 'foto13.jpg', title: 'Retrato em Externo' },
-      { filename: 'foto14.jpg', title: 'Retrato em Externo' },
-      { filename: 'foto15.jpg', title: 'Retrato em Externo' },
-      { filename: 'foto16.jpg', title: 'Retrato em Externo' },
-      { filename: 'foto17.jpg', title: 'Retrato em Externo' },
-      { filename: 'foto18.jpg', title: 'Retrato em Externo' },
+      { filename: 'foto3.jpg' },
+      { filename: 'foto4.jpg' },
+      { filename: 'foto5.jpg' },
+      { filename: 'foto6.jpg' },
+      { filename: 'foto7.jpg' },
+      { filename: 'foto8.jpg' },
+      { filename: 'foto9.jpg' },
+      { filename: 'foto10.jpg' },
+      { filename: 'foto11.jpg' },
+      { filename: 'foto12.jpg' },
+      { filename: 'foto13.jpg' },
+      { filename: 'foto14.jpg' },
+      { filename: 'foto15.jpg' },
+      { filename: 'foto16.jpg' },
+      { filename: 'foto17.jpg' },
+      { filename: 'foto18.jpg' },
+    ],
+  },
+  {
+    title: 'Ensaio Artístico',
+    folder: '/projetos/estudioSky/',
+    images: [
+      { filename: 'foto2.jpg', title: 'Ensaio Artístico' },
+      { filename: 'foto3.jpg' },
+      { filename: 'foto4.jpg' },
+      { filename: 'foto5.jpg' },
+      
+    ],
+  },
+  {
+    title: 'Retratos de Viagem',
+    folder: '/projetos/itacare/',
+    images: [
+      { filename: 'foto1.jpg', title: 'Ensaio Artístico' },
+      { filename: 'foto2.jpg' },
+      { filename: 'foto3.jpg' },
+      { filename: 'foto4.jpg' },
+      
     ],
   },
 ]
@@ -59,29 +79,27 @@ const projetosComVideos: ProjetoVideo[] = [
   },
 ]
 
+const videosVerticais: ProjetoVideo[] = [
+  {
+    title: 'Prévia Pivete do Trap',
+    youtubeId: 'Iij7XFpMTPY',
+  },
+  {
+    title: 'VSL "Marcos no desenvolvimento do bebê"',
+    youtubeId: 'YP91a-KDHAk',
+  },
+  {
+    title: 'VSL "Plano de tratamento sob medida"',
+    youtubeId: 'Yjlxw44mKbs',
+  },
+]
+
 export default function Portfolio() {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
 
-  const [sliderRef] = useKeenSlider<HTMLDivElement>({
-    loop: false,
-    mode: 'snap',
-    slides: {
-      perView: 1.2,
-      spacing: 16,
-    },
-    breakpoints: {
-      '(min-width: 768px)': {
-        slides: { perView: 2.2, spacing: 24 },
-      },
-      '(min-width: 1024px)': {
-        slides: { perView: 3.2, spacing: 32 },
-      },
-    },
-  })
-
   return (
-    <main className="bg-black min-h-screen text-white px-6 py-12 space-y-12">
-      {/* FOTOS */}
+    <main className="bg-black min-h-screen text-white px-6 py-12 space-y-16">
+      {/* Projetos com fotos */}
       <section>
         <h1 className="text-4xl font-bold text-yellow-400 mb-8">Portfólio Fotográfico</h1>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -95,16 +113,16 @@ export default function Portfolio() {
             return (
               <div
                 key={index}
-                className="bg-neutral-900 p-4 rounded-2xl shadow-lg cursor-pointer hover:scale-[1.02] transition"
+                className="bg-neutral-900 p-4 rounded shadow-lg cursor-pointer hover:scale-[1.02] transition"
                 onClick={() => setOpenIndex(index)}
               >
-                <div className="relative w-full h-100 mb-5 rounded-2xl overflow-hidden border border-yellow-400">
+                <div className="relative w-full aspect-[4/3] mb-4 rounded overflow-hidden border border-yellow-400">
+
                   <Image
                     src={capa}
                     alt={`Capa do projeto ${project.title}`}
                     fill
-                    className="object-cover object-[center_35%]"
-                    placeholder="empty"
+                    className="object-cover object-[center_40%]"
                   />
                 </div>
                 <h2 className="text-2xl font-semibold mb-2">{project.title}</h2>
@@ -117,32 +135,65 @@ export default function Portfolio() {
                     slides={lightboxSlides}
                   />
                 )}
+                
               </div>
+              
             )
+            
           })}
         </div>
       </section>
 
-      {/* VÍDEOS EM CARROSSEL */}
+      {/* Vídeos horizontais */}
       <section>
-        <h2 className="text-4xl font-bold text-yellow-400 mb-8">Portfólio em Vídeo</h2>
-        <div ref={sliderRef} className="keen-slider">
-          {projetosComVideos.map((video, index) => (
+  <h2 className="text-4xl font-bold text-yellow-400 mb-8">Portfólio em Vídeo</h2>
+  <div className="flex space-x-6 overflow-x-auto scrollbar-thin scrollbar-thumb-yellow-400 pb-4">
+    {projetosComVideos.map((video, index) => (
+      <div
+        key={index}
+        className="min-w-[380px] max-w-[420px] bg-neutral-900 rounded-lg shadow-lg border border-yellow-400 overflow-hidden"
+      >
+        <div className="w-full aspect-video">
+          <iframe
+            className="w-full h-full"
+            src={`https://www.youtube.com/embed/${video.youtubeId}`}
+            title={video.title}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            loading="lazy"
+          />
+        </div>
+        <div className="p-3">
+          <h3 className="text-lg font-semibold">{video.title}</h3>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+
+
+      {/* Vídeos verticais (YouTube Shorts) */}
+      <section>
+        <h2 className="text-4xl font-bold text-yellow-400 mb-8">Vídeos Verticais</h2>
+        <div className="flex space-x-6 overflow-x-auto scrollbar-thin scrollbar-thumb-yellow-400 scrollbar-track-neutral-800 scrollbar-thumb-rounded-full pb-4">
+
+          {videosVerticais.map((video, index) => (
             <div
               key={index}
-              className="keen-slider__slide bg-neutral-900 p-4 rounded shadow-lg"
+              className="min-w-[300px] max-w-[320px] bg-neutral-900 rounded-lg shadow-lg border border-yellow-400 overflow-hidden"
             >
-              <div className="relative w-full aspect-video mb-4 rounded overflow-hidden border border-yellow-400">
+              <div className="w-full aspect-[9/16]">
                 <iframe
-                  className="w-full h-full rounded"
                   src={`https://www.youtube.com/embed/${video.youtubeId}`}
                   title={video.title}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allow="autoplay; clipboard-write; encrypted-media; picture-in-picture"
                   allowFullScreen
-                  loading="lazy"
+                  className="w-full h-full"
                 />
               </div>
-              <h3 className="text-2xl font-semibold">{video.title}</h3>
+              <div className="p-3">
+                <h3 className="text-lg font-semibold">{video.title}</h3>
+              </div>
             </div>
           ))}
         </div>
