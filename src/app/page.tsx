@@ -9,6 +9,23 @@ const email = 'jeanmacedo1302@gmail.com'
 export default function Home() {
   return (
     <main className="bg-black text-white min-h-screen flex flex-col items-center justify-center px-6 py-16">
+      {/* Imagem de destaque */}
+      <motion.div
+        initial={{ scale: 0.95, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ delay: 0.5, duration: 0.8 }}
+        className="mt-1 mb-6 w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-yellow-400 shadow-xl"
+      >
+        <Image
+          src="/JeanCarlos.jpg"
+          alt="Jean Macêdo"
+          width={320}   // md:w-80 == 320px, ajustei para corresponder
+          height={320}
+          className="object-cover rounded-full"
+          priority  // carrega rápido pois é a imagem principal
+          placeholder="empty" // para usar blur, precisa de uma base64; sem ela, use "empty"
+        />
+      </motion.div>
       {/* Hero Section */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -63,23 +80,7 @@ export default function Home() {
         </a>
       </motion.div>
 
-      {/* Imagem de destaque */}
-      <motion.div
-        initial={{ scale: 0.95, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ delay: 0.5, duration: 0.8 }}
-        className="mt-16 w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-yellow-400 shadow-xl"
-      >
-        <Image
-          src="/JeanCarlos.jpg"
-          alt="Jean Macêdo"
-          width={320}   // md:w-80 == 320px, ajustei para corresponder
-          height={320}
-          className="object-cover rounded-full"
-          priority  // carrega rápido pois é a imagem principal
-          placeholder="empty" // para usar blur, precisa de uma base64; sem ela, use "empty"
-        />
-      </motion.div>
+      
     </main>
   )
 }
