@@ -95,15 +95,15 @@ export default function Portfolio() {
             return (
               <div
                 key={index}
-                className="bg-neutral-900 p-4 rounded shadow-lg cursor-pointer hover:scale-[1.02] transition"
+                className="bg-neutral-900 p-4 rounded-2xl shadow-lg cursor-pointer hover:scale-[1.02] transition"
                 onClick={() => setOpenIndex(index)}
               >
-                <div className="relative w-full h-64 mb-4 rounded overflow-hidden border border-yellow-400">
+                <div className="relative w-full h-100 mb-5 rounded-2xl overflow-hidden border border-yellow-400">
                   <Image
                     src={capa}
                     alt={`Capa do projeto ${project.title}`}
                     fill
-                    className="object-cover"
+                    className="object-cover object-[center_35%]"
                     placeholder="empty"
                   />
                 </div>
