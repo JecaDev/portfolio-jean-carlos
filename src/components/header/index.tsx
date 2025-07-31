@@ -19,7 +19,7 @@ export default function Header() {
           className="rounded-full"
           priority
         />
-        <span className="text-yellow-400 text-xl font-bold tracking-wide whitespace-nowrap">
+        <span className="text-yellow-400 text-lg font-bold tracking-wide whitespace-nowrap">
           Jean Macêdo • Foto & Vídeo
         </span>
       </Link>
