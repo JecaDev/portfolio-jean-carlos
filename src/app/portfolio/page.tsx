@@ -22,17 +22,25 @@ const projetosComImagens: ProjetoImagem[] = [
     folder: '/projetos/retrato/',
     images: [
       { filename: 'foto1.jpg', title: 'Retrato em Estúdio' },
-      { filename: 'foto2.jpg', title: 'Retrato em Externo' },
+      { filename: 'foto3.jpg', title: 'Retrato em Externo' },
+      { filename: 'foto4.jpg', title: 'Retrato em Externo' },
+      { filename: 'foto5.jpg', title: 'Retrato em Externo' },
+      { filename: 'foto6.jpg', title: 'Retrato em Externo' },
+      { filename: 'foto7.jpg', title: 'Retrato em Externo' },
+      { filename: 'foto8.jpg', title: 'Retrato em Externo' },
+      { filename: 'foto9.jpg', title: 'Retrato em Externo' },
+      { filename: 'foto10.jpg', title: 'Retrato em Externo' },
+      { filename: 'foto11.jpg', title: 'Retrato em Externo' },
+      { filename: 'foto12.jpg', title: 'Retrato em Externo' },
+      { filename: 'foto13.jpg', title: 'Retrato em Externo' },
+      { filename: 'foto14.jpg', title: 'Retrato em Externo' },
+      { filename: 'foto15.jpg', title: 'Retrato em Externo' },
+      { filename: 'foto16.jpg', title: 'Retrato em Externo' },
+      { filename: 'foto17.jpg', title: 'Retrato em Externo' },
+      { filename: 'foto18.jpg', title: 'Retrato em Externo' },
     ],
   },
-  {
-    title: 'Ensaio Urbano',
-    folder: '/projetos/urbano/',
-    images: [
-      { filename: 'foto1.jpg', title: 'Centro da Cidade' },
-      { filename: 'foto2.jpg', title: 'Grafite' },
-    ],
-  },
+  
 ]
 
 const projetosComVideos: ProjetoVideo[] = [
@@ -40,10 +48,7 @@ const projetosComVideos: ProjetoVideo[] = [
     title: 'Clipe: Pivete do Trap',
     youtubeId: 'G4NT8T_BJbs',
   },
-  {
-    title: 'Teaser Promocional',
-    youtubeId: 'dQw4w9WgXcQ', // exemplo extra
-  },
+  
 ]
 
 export default function Portfolio() {
