@@ -4,6 +4,8 @@ import Image from 'next/image'
 import { useState } from 'react'
 import Lightbox from 'yet-another-react-lightbox'
 import 'yet-another-react-lightbox/styles.css'
+import 'keen-slider/keen-slider.min.css'
+import { useKeenSlider } from 'keen-slider/react'
 
 type ProjetoImagem = {
   title: string
@@ -44,16 +46,42 @@ const projetosComImagens: ProjetoImagem[] = [
 
 const projetosComVideos: ProjetoVideo[] = [
   {
-    title: 'Clipe: Pivete do Trap',
+    title: 'Pivete do Trap (Clipe Oficial)',
     youtubeId: 'G4NT8T_BJbs',
+  },
+  {
+    title: 'Making Of - Flashback (Clipe Oficial)',
+    youtubeId: 'd1MHpjXBafc',
+  },
+  {
+    title: 'Color Grading Profissional (Antes/Depois)',
+    youtubeId: 'mgYjOblMF6I',
   },
 ]
 
 export default function Portfolio() {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
 
+  const [sliderRef] = useKeenSlider<HTMLDivElement>({
+    loop: false,
+    mode: 'snap',
+    slides: {
+      perView: 1.2,
+      spacing: 16,
+    },
+    breakpoints: {
+      '(min-width: 768px)': {
+        slides: { perView: 2.2, spacing: 24 },
+      },
+      '(min-width: 1024px)': {
+        slides: { perView: 3.2, spacing: 32 },
+      },
+    },
+  })
+
   return (
     <main className="bg-black min-h-screen text-white px-6 py-12 space-y-12">
+      {/* FOTOS */}
       <section>
         <h1 className="text-4xl font-bold text-yellow-400 mb-8">Portfólio Fotográfico</h1>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -77,7 +105,6 @@ export default function Portfolio() {
                     fill
                     className="object-cover"
                     placeholder="empty"
-                    // Se quiser blur placeholder, pode adicionar blurDataURL aqui
                   />
                 </div>
                 <h2 className="text-2xl font-semibold mb-2">{project.title}</h2>
@@ -96,11 +123,15 @@ export default function Portfolio() {
         </div>
       </section>
 
+      {/* VÍDEOS EM CARROSSEL */}
       <section>
         <h2 className="text-4xl font-bold text-yellow-400 mb-8">Portfólio em Vídeo</h2>
-        <div className="grid md:grid-cols-2 gap-8">
+        <div ref={sliderRef} className="keen-slider">
           {projetosComVideos.map((video, index) => (
-            <div key={index} className="bg-neutral-900 p-4 rounded shadow-lg">
+            <div
+              key={index}
+              className="keen-slider__slide bg-neutral-900 p-4 rounded shadow-lg"
+            >
               <div className="relative w-full aspect-video mb-4 rounded overflow-hidden border border-yellow-400">
                 <iframe
                   className="w-full h-full rounded"
@@ -108,7 +139,7 @@ export default function Portfolio() {
                   title={video.title}
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
-                  loading="lazy" // para ajudar no carregamento
+                  loading="lazy"
                 />
               </div>
               <h3 className="text-2xl font-semibold">{video.title}</h3>
