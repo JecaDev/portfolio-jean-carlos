@@ -81,6 +81,10 @@ const projetosComVideos: ProjetoVideo[] = [
 
 const videosVerticais: ProjetoVideo[] = [
   {
+    title: 'VSL "Caixinhas de Pergunta"',
+    youtubeId: 'ocAllZBHHa8',
+  },
+  {
     title: 'Prévia Pivete do Trap',
     youtubeId: 'Iij7XFpMTPY',
   },
@@ -91,10 +95,6 @@ const videosVerticais: ProjetoVideo[] = [
   {
     title: 'VSL "Plano de tratamento sob medida"',
     youtubeId: 'Yjlxw44mKbs',
-  },
-  {
-    title: 'VSL "Caixinhas de Pergunta"',
-    youtubeId: 'ocAllZBHHa8',
   },
 ]
 
