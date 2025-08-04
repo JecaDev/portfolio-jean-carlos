@@ -92,6 +92,10 @@ const videosVerticais: ProjetoVideo[] = [
     title: 'VSL "Plano de tratamento sob medida"',
     youtubeId: 'Yjlxw44mKbs',
   },
+  {
+    title: 'VSL "Caixinhas de Pergunta"',
+    youtubeId: 'ocAllZBHHa8',
+  },
 ]
 
 export default function Portfolio() {
