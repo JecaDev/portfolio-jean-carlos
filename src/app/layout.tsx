@@ -25,7 +25,7 @@ export default function RootLayout({
       <body className={oswald.className}>
         <Header />
         <main>{children}</main>
-        
+        <SpeedInsights/>
       </body>
     </html>
   )
