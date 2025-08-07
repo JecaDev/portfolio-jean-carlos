@@ -86,12 +86,12 @@ export default function Sobre() {
         <div className="grid md:grid-cols-2 gap-8">
           {[
             {
-              nome: 'Marina S.',
+              nome: 'Marina A.',
               texto: 'A sensibilidade do Jean ao capturar momentos foi além do esperado. As fotos do meu evento ficaram incríveis!',
             },
             {
-              nome: 'Carlos A.',
-              texto: 'Trabalhar com Jean foi fácil, rápido e com um resultado impecável. Recomendo de olhos fechados.',
+              nome: 'Noelice S.',
+              texto: 'Trabalho de excelência, feito com muitíssimo profissionalismo e muito amor também. Obrigada por ajudar a eternizar os melhores momentos da minha família.',
             },
           ].map((dep, i) => (
             <div key={i} className="bg-neutral-900 p-6 rounded shadow-lg relative">
