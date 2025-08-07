@@ -20,7 +20,7 @@ export default function Header() {
           priority
         />
         <span className="text-yellow-400 text-lg font-bold tracking-wide whitespace-nowrap">
-          Jean Macêdo • Foto & Vídeo
+          Jean Carlos • Foto & Vídeo
         </span>
       </Link>
 
