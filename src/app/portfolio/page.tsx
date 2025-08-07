@@ -41,14 +41,20 @@ const projetosComImagens: ProjetoImagem[] = [
     ],
   },
   {
-    title: 'Ensaio Artístico',
-    folder: '/projetos/estudioSky/',
+    title: 'Aniversário de 15 Anos',
+    folder: '/projetos/15anosLet/',
     images: [
-      { filename: 'foto2.jpg', title: 'Ensaio Artístico' },
-      { filename: 'foto3.jpg' },
-      { filename: 'foto4.jpg' },
-      { filename: 'foto5.jpg' },
-      
+      { filename: 'foto1.jpg', title: 'Aniversário de 15 Anos' },
+      { filename: '3.jpg' },
+      { filename: '4.jpg' },
+      { filename: '5.jpg' },
+      { filename: '6.jpg' },
+      { filename: '7.jpg' },
+      { filename: '8.jpg' },
+      { filename: '9.jpg' },
+      { filename: '10.jpg' },
+      { filename: '11.jpg' },
+      { filename: '12.jpg' },
     ],
   },
   {
@@ -62,6 +68,18 @@ const projetosComImagens: ProjetoImagem[] = [
       
     ],
   },
+  {
+    title: 'Ensaio Artístico',
+    folder: '/projetos/estudioSky/',
+    images: [
+      { filename: 'foto2.jpg', title: 'Ensaio Artístico' },
+      { filename: 'foto3.jpg' },
+      { filename: 'foto4.jpg' },
+      { filename: 'foto5.jpg' },
+      
+    ],
+  },
+  
 ]
 
 const projetosComVideos: ProjetoVideo[] = [
