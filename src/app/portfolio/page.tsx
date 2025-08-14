@@ -73,7 +73,6 @@ const projetosComImagens: ProjetoImagem[] = [
       { filename: '10.jpg' },
       { filename: '11.jpg' },
       { filename: '12.jpg' },
-      { filename: '3.jpg' },
     ],
   },
   {
