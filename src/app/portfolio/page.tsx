@@ -18,7 +18,7 @@ type ProjetoVideo = {
 
 const projetosComImagens: ProjetoImagem[] = [
   {
-    title: 'Retratos em Estúdio',
+    title: 'Ensaio Fotográfico - Perfil Profissional',
     folder: '/projetos/retrato/',
     images: [
       { filename: 'foto1.jpg', title: 'Retrato em Estúdio' },
@@ -58,10 +58,29 @@ const projetosComImagens: ProjetoImagem[] = [
     ],
   },
   {
-    title: 'Retratos de Viagem',
+    title: 'Registro Fotográfico - Pelourinho',
+    folder: '/projetos/pelourinho/',
+    images: [
+      { filename: '1.jpg', title: 'Registro Fotográfico - Pelourinho' },
+      { filename: '2.jpg' },
+      { filename: '3.jpg' },
+      { filename: '4.jpg' },
+      { filename: '5.jpg' },
+      { filename: '6.jpg' },
+      { filename: '7.jpg' },
+      { filename: '8.jpg' },
+      { filename: '9.jpg' },
+      { filename: '10.jpg' },
+      { filename: '11.jpg' },
+      { filename: '12.jpg' },
+      { filename: '3.jpg' },
+    ],
+  },
+  {
+    title: 'Registro Fotográfico - Itacaré',
     folder: '/projetos/itacare/',
     images: [
-      { filename: 'foto1.jpg', title: 'Ensaio Artístico' },
+      { filename: 'foto1.jpg', title: 'Registro Fotográfico - Itacaré' },
       { filename: 'foto2.jpg' },
       { filename: 'foto3.jpg' },
       { filename: 'foto4.jpg' },
@@ -69,7 +88,7 @@ const projetosComImagens: ProjetoImagem[] = [
     ],
   },
   {
-    title: 'Ensaio Artístico',
+    title: 'Ensaio Fotográfico - Album de Trap',
     folder: '/projetos/estudioSky/',
     images: [
       { filename: 'foto2.jpg', title: 'Ensaio Artístico' },
