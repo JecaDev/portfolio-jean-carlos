@@ -88,7 +88,7 @@ const projetosComImagens: ProjetoImagem[] = [
   },
   {
     title: 'Ensaio Fotográfico - Album de Trap',
-    folder: '/projetos/estudioSk"y/',
+    folder: '/projetos/estudioSky/',
     images: [
       { filename: 'foto2.jpg', title: 'Ensaio Artístico' },
       { filename: 'foto3.jpg' },
