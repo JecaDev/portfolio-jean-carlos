@@ -61,7 +61,7 @@ const projetosComImagens: ProjetoImagem[] = [
     title: 'Registro Fotográfico - Pelourinho',
     folder: '/projetos/pelourinho/',
     images: [
-      { filename: '1.jpg', title: 'Registro Fotográfico - Pelourinho' },
+      { filename: 'foto1.jpg', title: 'Registro Fotográfico - Pelourinho' },
       { filename: '2.jpg' },
       { filename: '3.jpg' },
       { filename: '4.jpg' },
@@ -89,7 +89,7 @@ const projetosComImagens: ProjetoImagem[] = [
   },
   {
     title: 'Ensaio Fotográfico - Album de Trap',
-    folder: '/projetos/estudioSky/',
+    folder: '/projetos/estudioSk"y/',
     images: [
       { filename: 'foto2.jpg', title: 'Ensaio Artístico' },
       { filename: 'foto3.jpg' },
