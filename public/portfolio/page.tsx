@@ -1,6 +1,5 @@
 'use client'
 
-import { div } from 'framer-motion/client'
 import Image from 'next/image'
 import { useState } from 'react'
 import Lightbox from 'yet-another-react-lightbox'
@@ -39,23 +38,6 @@ const projetosComImagens: ProjetoImagem[] = [
       { filename: 'foto16.jpg' },
       { filename: 'foto17.jpg' },
       { filename: 'foto18.jpg' },
-    ],
-  },
-  {
-    title: 'RedBull Paranauê 2025',
-    folder: '/projetos/redbullparanaue/',
-    images: [
-      { filename: 'foto1.jpg', title: 'Redbull Paranaue 2025' },
-      { filename: 'foto3.jpg' },
-      { filename: 'foto4.jpg' },
-      { filename: 'foto5.jpg' },
-      { filename: 'foto6.jpg' },
-      { filename: 'foto7.jpg' },
-      { filename: 'foto8.jpg' },
-      { filename: 'foto9.jpg' },
-      { filename: 'foto10.jpg' },
-      { filename: 'foto11.jpg' },
-      { filename: 'foto12.jpg' },
     ],
   },
   {
@@ -135,30 +117,21 @@ const projetosComVideos: ProjetoVideo[] = [
 
 const videosVerticais: ProjetoVideo[] = [
   {
-    title: 'Campanha "O Peso da Virilidade Vídeo 1"',
-    youtubeId: 'M2kMF6042tk',
-  },
-  {
     title: 'VSL "Caixinhas de Pergunta"',
     youtubeId: 'ocAllZBHHa8',
+  },
+  {
+    title: 'Prévia Pivete do Trap',
+    youtubeId: 'Iij7XFpMTPY',
   },
   {
     title: 'VSL "Marcos no desenvolvimento do bebê"',
     youtubeId: 'YP91a-KDHAk',
   },
   {
-    title: 'Campanha "O Peso da Virilidade" Vídeo 2',
-    youtubeId: 'A8jYlMXG1AE',
-  },
-  {
     title: 'VSL "Plano de tratamento sob medida"',
     youtubeId: 'Yjlxw44mKbs',
   },
-  {
-    title: 'Prévia Pivete do Trap',
-    youtubeId: 'Iij7XFpMTPY',
-  },
-
 ]
 
 export default function Portfolio() {

@@ -8,7 +8,7 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
 
   return (
-    <header className="bg-black shadow-md py-4 px-6 flex items-center justify-between relative">
+    <header className="bg-zinc-950 shadow-md py-4 px-6 flex items-center justify-between relative">
       {/* Logo + Nome */}
       <Link href="/" className="flex items-center space-x-3 z-20">
         <Image
