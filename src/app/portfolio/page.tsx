@@ -56,6 +56,39 @@ const projetosComImagens: ProjetoImagem[] = [
       { filename: '32.jpg' },
     ],
   },
+  {
+    title: 'Aniversário de 15 Anos - Núbia',
+    folder: '/projetos/15anosNubia/',
+    images: [
+      { filename: 'foto1.jpg', title: 'Aniversário de 15 Anos - Núbia' },
+      { filename: '2.jpg' },
+      { filename: '3.jpg' },
+      { filename: '4.jpg' },
+      { filename: '5.jpg' },
+      { filename: '6.jpg' },
+      { filename: '7.jpg' },
+      { filename: '8.jpg' },
+      { filename: '9.jpg' },
+      { filename: '10.jpg' },
+      { filename: '11.jpg' },
+      { filename: '12.jpg' },
+      { filename: '13.jpg' },
+      { filename: '14.jpg' },
+      { filename: '15.jpg' },
+      { filename: '16.jpg' },
+      { filename: '17.jpg' },
+      { filename: '18.jpg' },
+      { filename: '19.jpg' },
+      { filename: '20.jpg' },
+      { filename: '21.jpg' },
+      { filename: '22.jpg' },
+      { filename: '23.jpg' },
+      { filename: '24.jpg' },
+      { filename: '25.jpg' },
+      { filename: '26.jpg' },
+      { filename: '27.jpg' },
+    ],
+  },
 {
     title: 'Fotografia de Casamento Civil',
     folder: '/projetos/casamento-adailma/',
@@ -158,10 +191,10 @@ const projetosComImagens: ProjetoImagem[] = [
   },
   
   {
-    title: 'Aniversário de 15 Anos',
+    title: 'Aniversário de 15 Anos - Letícia',
     folder: '/projetos/15anosLet/',
     images: [
-      { filename: 'foto1.jpg', title: 'Aniversário de 15 Anos' },
+      { filename: 'foto1.jpg', title: 'Aniversário de 15 Anos Let' },
       { filename: '3.jpg' },
       { filename: '4.jpg' },
       { filename: '5.jpg' },
@@ -233,6 +266,10 @@ const projetosComVideos: ProjetoVideo[] = [
 ]
 
 const videosVerticais: ProjetoVideo[] = [
+  {
+    title: 'Vídeo Depoimento Sobre Emagrecimento',
+    youtubeId: 'g_lILSizZrc',
+  },
   {
     title: 'Campanha "O Peso da Virilidade Vídeo 1"',
     youtubeId: 'M2kMF6042tk',
