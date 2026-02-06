@@ -24,10 +24,9 @@ export default function RootLayout({
     <html lang="pt">
       <body className={oswald.className}>
         <Header />
-        <main>{children}</main>
+        <div>{children}</div>
         <SpeedInsights/>
       </body>
     </html>
   )
 }
-
