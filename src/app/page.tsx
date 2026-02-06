@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { FaWhatsapp, FaInstagram, FaEnvelope } from 'react-icons/fa'
+import PageShell from '../components/ui/PageShell'
 
 const email = 'jeanmacedo1302@gmail.com'
 

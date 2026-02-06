@@ -20,7 +20,7 @@ export default function RootLayout({
       <body className="bg-slate-950 text-white font-sans">
         <Header />
         <div>{children}</div>
-        <SpeedInsights />
+        <SpeedInsights/>
       </body>
     </html>
   )

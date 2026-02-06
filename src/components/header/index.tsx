@@ -8,33 +8,37 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/10 bg-slate-950/80 backdrop-blur-lg">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <Link href="/" className="flex items-center gap-3">
-          <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-yellow-400/10">
-            <Image
-              src="/logo.png"
-              alt="Logo do portfólio"
-              width={36}
-              height={36}
-              className="rounded-full"
-              priority
-            />
-          </span>
-          <div>
-            <span className="block text-sm uppercase tracking-[0.3em] text-white/60">
-              Portfólio
-            </span>
-            <span className="text-lg font-semibold text-yellow-300">
-              Jean Carlos • Foto & Vídeo
-            </span>
-          </div>
-        </Link>
+    <header className="sticky top-0 z-30 border-b border-white/10 bg-slate-950/80 px-6 py-4 backdrop-blur">
+      {/* Logo + Nome */}
+      <Link href="/" className="flex items-center space-x-3 z-20">
+        <Image
+          src="/logo.png"
+          alt="Logo do portfólio"
+          width={36}
+          height={36}
+          className="rounded-full"
+          priority
+        />
+        <span className="text-yellow-300 text-lg font-semibold tracking-wide whitespace-nowrap">
+          Jean Carlos • Foto & Vídeo
+        </span>
+      </Link>
 
-        <button
-          className="rounded-full border border-yellow-400/40 p-2 text-yellow-300 md:hidden"
-          aria-label="Abrir menu"
-          onClick={() => setMenuOpen(!menuOpen)}
+      {/* Botão Menu Mobile */}
+      <button
+        className="text-yellow-300 md:hidden focus:outline-none z-20"
+        aria-label="Abrir menu"
+        onClick={() => setMenuOpen(!menuOpen)}
+      >
+        {/* Ícone hambúrguer */}
+        <svg
+          className="w-8 h-8"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth={2}
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          viewBox="0 0 24 24"
         >
           <svg
             className="h-6 w-6"
@@ -53,46 +57,46 @@ export default function Header() {
           </svg>
         </button>
 
-        <nav className="hidden items-center gap-6 md:flex">
-          {[
-            { href: '/', label: 'Home' },
-            { href: '/portfolio', label: 'Portfólio' },
-            { href: '/sobre', label: 'Sobre' },
-            { href: '/contato', label: 'Contato' },
-          ].map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="text-sm font-semibold uppercase tracking-[0.2em] text-white/70 transition hover:text-yellow-300"
-            >
-              {item.label}
-            </Link>
-          ))}
-        </nav>
-      </div>
+      {/* Menu desktop */}
+      <nav className="hidden md:flex items-center space-x-6 text-sm font-semibold text-white/80 z-20">
+        <Link href="/" className="transition-colors duration-200 hover:text-yellow-200">
+          Home
+        </Link>
+        <Link href="/portfolio" className="transition-colors duration-200 hover:text-yellow-200">
+          Portfólio
+        </Link>
+        <Link href="/sobre" className="transition-colors duration-200 hover:text-yellow-200">
+          Sobre
+        </Link>
+        <Link href="/servicos" className="transition-colors duration-200 hover:text-yellow-200">
+          Serviços
+        </Link>
+        <Link href="/contato" className="transition-colors duration-200 hover:text-yellow-200">
+          Contato
+        </Link>
+      </nav>
 
       {menuOpen && (
-        <div className="border-t border-white/10 bg-slate-950/90 md:hidden">
-          <nav
-            className="mx-auto flex max-w-6xl flex-col gap-2 px-6 py-4"
-            onClick={() => setMenuOpen(false)}
-          >
-            {[
-              { href: '/', label: 'Home' },
-              { href: '/portfolio', label: 'Portfólio' },
-              { href: '/sobre', label: 'Sobre' },
-              { href: '/contato', label: 'Contato' },
-            ].map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="rounded-2xl border border-white/10 px-4 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-white/80 transition hover:border-yellow-400/40 hover:text-yellow-300"
-              >
-                {item.label}
-              </Link>
-            ))}
-          </nav>
-        </div>
+        <nav
+          className="absolute top-full right-0 mt-2 w-52 rounded-2xl border border-white/10 bg-slate-950/95 p-2 shadow-xl flex flex-col z-10"
+          onClick={() => setMenuOpen(false)} // fecha menu ao clicar em link
+>
+          <Link href="/" className="rounded-xl px-4 py-3 text-sm font-semibold text-white/80 transition-colors hover:bg-white/10 hover:text-white">
+            Home
+          </Link>
+          <Link href="/portfolio" className="rounded-xl px-4 py-3 text-sm font-semibold text-white/80 transition-colors hover:bg-white/10 hover:text-white">
+            Portfólio
+          </Link>
+          <Link href="/sobre" className="rounded-xl px-4 py-3 text-sm font-semibold text-white/80 transition-colors hover:bg-white/10 hover:text-white">
+            Sobre
+          </Link>
+          <Link href="/servicos" className="rounded-xl px-4 py-3 text-sm font-semibold text-white/80 transition-colors hover:bg-white/10 hover:text-white">
+            Serviços
+          </Link>
+          <Link href="/contato" className="rounded-xl px-4 py-3 text-sm font-semibold text-white/80 transition-colors hover:bg-white/10 hover:text-white">
+            Contato
+          </Link>
+        </nav>
       )}
     </header>
   )
