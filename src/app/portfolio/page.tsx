@@ -1,389 +1,133 @@
 'use client'
 
-import { div } from 'framer-motion/client'
 import Image from 'next/image'
-import { useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import Lightbox from 'yet-another-react-lightbox'
 import 'yet-another-react-lightbox/styles.css'
-
-type ProjetoImagem = {
-  title: string
-  folder: string
-  images: { filename: string; title?: string }[]
-}
-
-type ProjetoVideo = {
-  title: string
-  youtubeId: string
-}
-
-const projetosComImagens: ProjetoImagem[] = [
-  {
-    title: 'Cobertura Fotográfica de Evento - Design & Dendê 2025',
-    folder: '/projetos/design&dende/',
-    images: [
-      { filename: 'foto1.jpg', title: 'Design & Dendê 2025' },
-      { filename: '2.jpg' },
-      { filename: '3.jpg' },
-      { filename: '4.jpg' },
-      { filename: '5.jpg' },
-      { filename: '6.jpg' },
-      { filename: '7.jpg' },
-      { filename: '8.jpg' },
-      { filename: '9.jpg' },
-      { filename: '10.jpg' },
-      { filename: '11.jpg' },
-      { filename: '12.jpg' },
-      { filename: '13.jpg' },
-      { filename: '14.jpg' },
-      { filename: '15.jpg' },
-      { filename: '16.jpg' },
-      { filename: '17.jpg' },
-      { filename: '18.jpg' },
-      { filename: '19.jpg' },
-      { filename: '20.jpg' },
-      { filename: '21.jpg' },
-      { filename: '22.jpg' },
-      { filename: '23.jpg' },
-      { filename: '24.jpg' },
-      { filename: '25.jpg' },
-      { filename: '26.jpg' },
-      { filename: '27.jpg' },
-      { filename: '28.jpg' },
-      { filename: '29.jpg' },
-      { filename: '30.jpg' },
-      { filename: '31.jpg' },
-      { filename: '32.jpg' },
-    ],
-  },
-  {
-    title: 'Aniversário de 15 Anos - Núbia',
-    folder: '/projetos/15anosNubia/',
-    images: [
-      { filename: 'foto1.jpg', title: 'Aniversário de 15 Anos - Núbia' },
-      { filename: '2.jpg' },
-      { filename: '3.jpg' },
-      { filename: '4.jpg' },
-      { filename: '5.jpg' },
-      { filename: '6.jpg' },
-      { filename: '7.jpg' },
-      { filename: '8.jpg' },
-      { filename: '9.jpg' },
-      { filename: '10.jpg' },
-      { filename: '11.jpg' },
-      { filename: '12.jpg' },
-      { filename: '13.jpg' },
-      { filename: '14.jpg' },
-      { filename: '15.jpg' },
-      { filename: '16.jpg' },
-      { filename: '17.jpg' },
-      { filename: '18.jpg' },
-      { filename: '19.jpg' },
-      { filename: '20.jpg' },
-      { filename: '21.jpg' },
-      { filename: '22.jpg' },
-      { filename: '23.jpg' },
-      { filename: '24.jpg' },
-      { filename: '25.jpg' },
-      { filename: '26.jpg' },
-      { filename: '27.jpg' },
-    ],
-  },
-{
-    title: 'Fotografia de Casamento Civil',
-    folder: '/projetos/casamento-adailma/',
-    images: [
-      { filename: 'foto1.jpg', title: 'Casamento Adailma' },
-      { filename: '2.jpg' },
-      { filename: '3.jpg' },
-      { filename: '4.jpg' },
-      { filename: '5.jpg' },
-      { filename: '6.jpg' },
-      { filename: '7.jpg' },
-      { filename: '8.jpg' },
-      { filename: '9.jpg' },
-      { filename: '10.jpg' },
-      { filename: '11.jpg' },
-      { filename: '12.jpg' },
-      { filename: '13.jpg' },
-      { filename: '14.jpg' },
-      { filename: '15.jpg' },
-      { filename: '16.jpg' },
-      { filename: '17.jpg' },
-      { filename: '18.jpg' },
-    ],
-  },
-  {
-    title: 'Fotografia de Produto - Acessórios Ninfa',
-    folder: '/projetos/acessoriosninfa/',
-    images: [
-      { filename: 'foto1.jpg', title: 'Fotografia de Produto - Acessórios Ninfa' },
-      { filename: '2.jpg' },
-      { filename: '3.jpg' },
-      { filename: '4.jpg' },
-      { filename: '5.jpg' },
-      { filename: '6.jpg' },
-      { filename: '7.jpg' },
-      { filename: '8.jpg' },
-      { filename: '9.jpg' },
-      { filename: '10.jpg' },
-      { filename: '11.jpg' },
-      { filename: '12.jpg' },
-      { filename: '13.jpg' },
-      { filename: '14.jpg' },
-      { filename: '15.jpg' },
-      { filename: '16.jpg' },
-      { filename: '17.jpg' },
-      { filename: '18.jpg' },
-      { filename: '19.jpg' },
-      { filename: '20.jpg' },
-      { filename: '21.jpg' },
-      { filename: '22.jpg' },
-      { filename: '23.jpg' },
-      { filename: '24.jpg' },
-      { filename: '25.jpg' },
-      { filename: '26.jpg' },
-      { filename: '27.jpg' },
-      { filename: '28.jpg' },
-      { filename: '29.jpg' },
-      { filename: '30.jpg' },
-    ],
-  },
-  {
-    title: 'Ensaio Fotográfico - Perfil Profissional',
-    folder: '/projetos/retrato/',
-    images: [
-      { filename: 'foto1.jpg', title: 'Retrato em Estúdio' },
-      { filename: 'foto3.jpg' },
-      { filename: 'foto4.jpg' },
-      { filename: 'foto5.jpg' },
-      { filename: 'foto6.jpg' },
-      { filename: 'foto7.jpg' },
-      { filename: 'foto8.jpg' },
-      { filename: 'foto9.jpg' },
-      { filename: 'foto10.jpg' },
-      { filename: 'foto11.jpg' },
-      { filename: 'foto12.jpg' },
-      { filename: 'foto13.jpg' },
-      { filename: 'foto14.jpg' },
-      { filename: 'foto15.jpg' },
-      { filename: 'foto16.jpg' },
-      { filename: 'foto17.jpg' },
-      { filename: 'foto18.jpg' },
-    ],
-  },
-  {
-    title: 'RedBull Paranauê 2025',
-    folder: '/projetos/redbullparanaue/',
-    images: [
-      { filename: 'foto1.jpg', title: 'Redbull Paranaue 2025' },
-      { filename: 'foto3.jpg' },
-      { filename: 'foto4.jpg' },
-      { filename: 'foto5.jpg' },
-      { filename: 'foto6.jpg' },
-      { filename: 'foto7.jpg' },
-      { filename: 'foto8.jpg' },
-      { filename: 'foto9.jpg' },
-      { filename: 'foto10.jpg' },
-      { filename: 'foto11.jpg' },
-      { filename: 'foto12.jpg' },
-    ],
-  },
-  
-  {
-    title: 'Aniversário de 15 Anos - Letícia',
-    folder: '/projetos/15anosLet/',
-    images: [
-      { filename: 'foto1.jpg', title: 'Aniversário de 15 Anos Let' },
-      { filename: '3.jpg' },
-      { filename: '4.jpg' },
-      { filename: '5.jpg' },
-      { filename: '6.jpg' },
-      { filename: '7.jpg' },
-      { filename: '8.jpg' },
-      { filename: '9.jpg' },
-      { filename: '10.jpg' },
-      { filename: '11.jpg' },
-      { filename: '12.jpg' },
-    ],
-  },
-  {
-    title: 'Registro Fotográfico - Pelourinho',
-    folder: '/projetos/pelourinho/',
-    images: [
-      { filename: 'foto1.jpg', title: 'Registro Fotográfico - Pelourinho' },
-      { filename: '2.jpg' },
-      { filename: '3.jpg' },
-      { filename: '4.jpg' },
-      { filename: '5.jpg' },
-      { filename: '6.jpg' },
-      { filename: '7.jpg' },
-      { filename: '8.jpg' },
-      { filename: '9.jpg' },
-      { filename: '10.jpg' },
-      { filename: '11.jpg' },
-      { filename: '12.jpg' },
-    ],
-  },
-  {
-    title: 'Registro Fotográfico - Itacaré',
-    folder: '/projetos/itacare/',
-    images: [
-      { filename: 'foto1.jpg', title: 'Registro Fotográfico - Itacaré' },
-      { filename: 'foto2.jpg' },
-      { filename: 'foto3.jpg' },
-      { filename: 'foto4.jpg' },
-      
-    ],
-  },
-  {
-    title: 'Ensaio Fotográfico - Album de Trap',
-    folder: '/projetos/estudioSky/',
-    images: [
-      { filename: 'foto2.jpg', title: 'Ensaio Artístico' },
-      { filename: 'foto3.jpg' },
-      { filename: 'foto4.jpg' },
-      { filename: 'foto5.jpg' },
-      
-    ],
-  },
-  
-]
-
-const projetosComVideos: ProjetoVideo[] = [
-  {
-    title: 'Pivete do Trap (Clipe Oficial)',
-    youtubeId: 'G4NT8T_BJbs',
-  },
-  {
-    title: 'Making Of - Flashback (Clipe Oficial)',
-    youtubeId: 'd1MHpjXBafc',
-  },
-  {
-    title: 'Color Grading Profissional (Antes/Depois)',
-    youtubeId: 'mgYjOblMF6I',
-  },
-]
-
-const videosVerticais: ProjetoVideo[] = [
-  {
-    title: 'Vídeo Depoimento Sobre Emagrecimento',
-    youtubeId: 'g_lILSizZrc',
-  },
-  {
-    title: 'Campanha "O Peso da Virilidade Vídeo 1"',
-    youtubeId: 'M2kMF6042tk',
-  },
-  {
-    title: 'VSL "Caixinhas de Pergunta"',
-    youtubeId: 'ocAllZBHHa8',
-  },
-  {
-    title: 'VSL "Marcos no desenvolvimento do bebê"',
-    youtubeId: 'YP91a-KDHAk',
-  },
-  {
-    title: 'Campanha "O Peso da Virilidade" Vídeo 2',
-    youtubeId: 'A8jYlMXG1AE',
-  },
-  {
-    title: 'VSL "Plano de tratamento sob medida"',
-    youtubeId: 'Yjlxw44mKbs',
-  },
-  {
-    title: 'Prévia Pivete do Trap',
-    youtubeId: 'Iij7XFpMTPY',
-  },
-
-]
+import PageHeader from '../../components/ui/PageHeader'
+import PageShell from '../../components/ui/PageShell'
+import type { PortfolioPayload } from '../../types/portfolio'
 
 export default function Portfolio() {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
+  const [portfolio, setPortfolio] = useState<PortfolioPayload | null>(null)
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    const loadPortfolio = async () => {
+      try {
+        const response = await fetch('/data/portfolio.json', { cache: 'no-store' })
+        const payload: PortfolioPayload = await response.json()
+        setPortfolio(payload)
+      } finally {
+        setIsLoading(false)
+      }
+    }
+
+    loadPortfolio()
+  }, [])
+
+  const imagesProjects = useMemo(() => portfolio?.images ?? [], [portfolio])
+  const videos = useMemo(() => portfolio?.videos ?? [], [portfolio])
+  const shorts = useMemo(() => portfolio?.shorts ?? [], [portfolio])
 
   return (
-    <main className="bg-black min-h-screen text-white px-6 py-12 space-y-16">
-      {/* Projetos com fotos */}
-      <section>
-        <h1 className="text-4xl font-bold text-yellow-400 mb-8">Portfólio Fotográfico</h1>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projetosComImagens.map((project, index) => {
-            const capa = `${project.folder}foto1.jpg`
-            const lightboxSlides = project.images.map((img) => ({
-              src: `${project.folder}${img.filename}`,
-              title: img.title,
-            }))
+    <PageShell>
+      <PageHeader
+        eyebrow="Trabalhos em destaque"
+        title="Portfólio Fotográfico & Audiovisual"
+        description="Uma seleção de coberturas fotográficas, projetos editoriais e produções em vídeo que mostram minha visão criativa."
+      />
 
-            return (
+      <section className="space-y-8">
+        <div className="flex items-center justify-between">
+          <h2 className="text-2xl font-semibold text-yellow-200">Portfólio Fotográfico</h2>
+          <span className="text-sm text-white/60">
+            {imagesProjects.length} projetos disponíveis
+          </span>
+        </div>
+        {isLoading ? (
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {Array.from({ length: 6 }).map((_, index) => (
               <div
                 key={index}
-                className="bg-neutral-900 p-4 rounded shadow-lg cursor-pointer hover:scale-[1.02] transition"
-                onClick={() => setOpenIndex(index)}
-              >
-                <div className="relative w-full aspect-[4/3] mb-4 rounded overflow-hidden border border-yellow-400">
+                className="h-64 animate-pulse rounded-3xl border border-white/10 bg-white/5"
+              />
+            ))}
+          </div>
+        ) : (
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {imagesProjects.map((project, index) => {
+              const coverImage = project.cover || project.images[0] || 'foto1.jpg'
+              const capa = `${project.folder}${coverImage}`
+              const lightboxSlides = project.images.map((image) => ({
+                src: `${project.folder}${image}`,
+              }))
 
-                  <Image
-                    src={capa}
-                    alt={`Capa do projeto ${project.title}`}
-                    fill
-                    className="object-cover object-[center_40%]"
-                  />
+              return (
+                <div
+                  key={project.title}
+                  className="group cursor-pointer rounded-3xl border border-white/10 bg-white/5 p-5 shadow-lg shadow-black/30 transition hover:-translate-y-1 hover:border-white/20"
+                  onClick={() => setOpenIndex(index)}
+                >
+                  <div className="relative mb-5 aspect-[4/3] w-full overflow-hidden rounded-2xl border border-white/10">
+                    <Image
+                      src={capa}
+                      alt={`Capa do projeto ${project.title}`}
+                      fill
+                      className="object-cover object-[center_40%] transition duration-500 group-hover:scale-105"
+                    />
+                  </div>
+                  <h3 className="text-lg font-semibold text-white">{project.title}</h3>
+                  <p className="mt-2 text-sm text-white/60">{project.images.length} fotos neste projeto</p>
+
+                  {openIndex === index && (
+                    <Lightbox
+                      open={true}
+                      close={() => setOpenIndex(null)}
+                      slides={lightboxSlides}
+                    />
+                  )}
                 </div>
-                <h2 className="text-2xl font-semibold mb-2">{project.title}</h2>
-                <p className="text-neutral-400">{project.images.length} fotos neste projeto</p>
+              )
+            })}
+          </div>
+        )}
+      </section>
 
-                {openIndex === index && (
-                  <Lightbox
-                    open={true}
-                    close={() => setOpenIndex(null)}
-                    slides={lightboxSlides}
-                  />
-                )}
-                
+      <section className="mt-16 space-y-8">
+        <h2 className="text-2xl font-semibold text-yellow-200">Portfólio em Vídeo</h2>
+        <div className="grid gap-6 md:grid-cols-2">
+          {videos.map((video, index) => (
+            <div
+              key={index}
+              className="overflow-hidden rounded-3xl border border-white/10 bg-white/5 shadow-lg shadow-black/30"
+            >
+              <div className="w-full aspect-video">
+                <iframe
+                  className="h-full w-full"
+                  src={`https://www.youtube.com/embed/${video.youtubeId}`}
+                  title={video.title}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  loading="lazy"
+                />
               </div>
-              
-            )
-            
-          })}
+              <div className="p-4">
+                <h3 className="text-base font-semibold text-white">{video.title}</h3>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
-      {/* Vídeos horizontais */}
-      <section>
-  <h2 className="text-4xl font-bold text-yellow-400 mb-8">Portfólio em Vídeo</h2>
-  <div className="flex space-x-6 overflow-x-auto scrollbar-thin scrollbar-thumb-yellow-400 pb-4">
-    {projetosComVideos.map((video, index) => (
-      <div
-        key={index}
-        className="min-w-[380px] max-w-[420px] bg-neutral-900 rounded-lg shadow-lg border border-yellow-400 overflow-hidden"
-      >
-        <div className="w-full aspect-video">
-          <iframe
-            className="w-full h-full"
-            src={`https://www.youtube.com/embed/${video.youtubeId}`}
-            title={video.title}
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-            loading="lazy"
-          />
-        </div>
-        <div className="p-3">
-          <h3 className="text-lg font-semibold">{video.title}</h3>
-        </div>
-      </div>
-    ))}
-  </div>
-</section>
-
-
-      {/* Vídeos verticais (YouTube Shorts) */}
-      <section>
-        <h2 className="text-4xl font-bold text-yellow-400 mb-8">Vídeos Verticais</h2>
-        <div className="flex space-x-6 overflow-x-auto scrollbar-thin scrollbar-thumb-yellow-400 scrollbar-track-neutral-800 scrollbar-thumb-rounded-full pb-4">
-
-          {videosVerticais.map((video, index) => (
+      <section className="mt-16 space-y-8">
+        <h2 className="text-2xl font-semibold text-yellow-200">Vídeos Verticais</h2>
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {shorts.map((video, index) => (
             <div
               key={index}
-              className="min-w-[300px] max-w-[320px] bg-neutral-900 rounded-lg shadow-lg border border-yellow-400 overflow-hidden"
+              className="overflow-hidden rounded-3xl border border-white/10 bg-white/5 shadow-lg shadow-black/30"
             >
               <div className="w-full aspect-[9/16]">
                 <iframe
@@ -394,13 +138,13 @@ export default function Portfolio() {
                   className="w-full h-full"
                 />
               </div>
-              <div className="p-3">
-                <h3 className="text-lg font-semibold">{video.title}</h3>
+              <div className="p-4">
+                <h3 className="text-base font-semibold text-white">{video.title}</h3>
               </div>
             </div>
           ))}
         </div>
       </section>
-    </main>
+    </PageShell>
   )
 }
