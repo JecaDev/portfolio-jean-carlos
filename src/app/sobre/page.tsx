@@ -41,6 +41,7 @@ export default function Sobre() {
           <p className="text-base leading-relaxed text-white/80 sm:text-lg">
             Olá! Eu sou <strong>Jean Macêdo</strong>, apaixonado por fotografia e vídeo profissional. Transformo visões e emoções em imagens que impactam e contam histórias com autenticidade.
           </p>
+        </motion.div>
 
           <p className="text-base leading-relaxed text-white/80 sm:text-lg">
             Com experiência em retratos, eventos e produção audiovisual, busco sempre inovar e conectar com o público, entregando qualidade visual e narrativa.
@@ -130,9 +131,8 @@ export default function Sobre() {
               <h3 className="text-lg font-semibold text-white">{s.title}</h3>
               <p className="mt-2 text-sm text-white/70">{s.desc}</p>
             </div>
-          ))}
-        </div>
-      </section>
+          </div>
+        </section>
 
       <section className="mt-16">
         <h2 className="text-2xl font-semibold text-yellow-200 text-center">Depoimentos</h2>

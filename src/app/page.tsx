@@ -35,8 +35,8 @@ export default function Home() {
   return (
     <main className="relative min-h-screen overflow-hidden bg-slate-950 text-white">
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -top-24 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-yellow-400/20 blur-[120px]" />
-        <div className="absolute bottom-0 right-0 h-80 w-80 translate-x-1/3 translate-y-1/3 rounded-full bg-sky-500/20 blur-[140px]" />
+        <div className="absolute -top-24 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-yellow-400/20 blur-[140px]" />
+        <div className="absolute bottom-0 right-0 h-96 w-96 translate-x-1/3 translate-y-1/3 rounded-full bg-cyan-500/20 blur-[160px]" />
       </div>
 
       <div className="relative mx-auto flex min-h-screen max-w-6xl flex-col justify-center px-6 py-16">
@@ -47,7 +47,7 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             className="space-y-6"
           >
-            <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm uppercase tracking-[0.25em] text-white/70">
+            <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.35em] text-white/70">
               Portfólio criativo
             </span>
 
@@ -55,7 +55,7 @@ export default function Home() {
               Bem-vindo ao meu portfólio
             </h1>
 
-            <p className="text-base text-white/80 sm:text-lg leading-relaxed">
+            <p className="text-base leading-relaxed text-white/80 sm:text-lg">
               Eu sou <strong className="text-white">Jean Macêdo</strong>, fotógrafo e videomaker apaixonado por capturar momentos únicos e transformar ideias em arte visual. Explore meus projetos e entre em contato para criarmos algo incrível juntos.
             </p>
 
@@ -96,7 +96,7 @@ export default function Home() {
             className="relative flex items-center justify-center"
           >
             <div className="absolute -inset-6 rounded-[40px] border border-white/10 bg-white/5 backdrop-blur-xl" />
-            <div className="relative overflow-hidden rounded-[32px] border border-white/20 bg-slate-900/60 p-6 shadow-2xl">
+            <div className="relative overflow-hidden rounded-[32px] border border-white/10 bg-slate-900/60 p-6 shadow-2xl">
               <div className="absolute -right-6 top-8 h-24 w-24 rounded-full bg-yellow-400/30 blur-2xl" />
               <Image
                 src="/JeanCarlos.jpg"

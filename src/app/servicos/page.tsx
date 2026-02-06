@@ -41,6 +41,7 @@ export default function Servicos() {
           <p className="text-base leading-relaxed text-white/80 sm:text-lg">
             Olá! Eu sou <strong>Jean Macêdo</strong>, apaixonado por fotografia e vídeo profissional. Transformo visões e emoções em imagens que impactam e contam histórias com autenticidade.
           </p>
+        </motion.div>
 
           <p className="text-base leading-relaxed text-white/80 sm:text-lg">
             Com experiência em retratos, eventos e produção audiovisual, busco sempre inovar e conectar com o público, entregando qualidade visual e narrativa.
@@ -51,6 +52,49 @@ export default function Servicos() {
             <li>🎬 Produção e edição de vídeo</li>
             <li>🎨 Direção criativa e color grading</li>
           </ul>
+          <div className="flex flex-wrap items-center gap-4">
+            <a
+              href={cvPath}
+              download
+              className="inline-flex items-center gap-2 rounded-full bg-yellow-400 px-6 py-3 text-sm font-semibold text-slate-950 transition hover:bg-yellow-300"
+            >
+              <FaDownload />
+              Baixar Currículo
+            </a>
+            <div className="flex items-center gap-3 text-2xl">
+              <a
+                href={`https://wa.me/${whatsappNumber.replace(/\D/g, '')}`}
+                target="_blank"
+                rel="noreferrer"
+                className="rounded-full bg-white/5 p-3 text-green-400 transition hover:bg-white/10"
+              >
+                <FaWhatsapp />
+              </a>
+              <a
+                href={`https://instagram.com/${instagramUser}`}
+                target="_blank"
+                rel="noreferrer"
+                className="rounded-full bg-white/5 p-3 text-pink-400 transition hover:bg-white/10"
+              >
+                <FaInstagram />
+              </a>
+              <a
+                href={`mailto:${email}`}
+                className="rounded-full bg-white/5 p-3 text-yellow-300 transition hover:bg-white/10"
+              >
+                <FaEnvelope />
+              </a>
+              <a
+                href={`https://linkedin.com/in/${linkedinUser}`}
+                target="_blank"
+                rel="noreferrer"
+                className="rounded-full bg-white/5 p-3 text-sky-400 transition hover:bg-white/10"
+              >
+                <FaLinkedin />
+              </a>
+            </div>
+          </div>
+        </section>
 
           <a
             href={cvPath}

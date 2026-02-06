@@ -40,13 +40,22 @@ export default function Header() {
           strokeLinejoin="round"
           viewBox="0 0 24 24"
         >
-          {menuOpen ? (
-            <path d="M6 18L18 6M6 6l12 12" /> // ícone "X" quando aberto
-          ) : (
-            <path d="M3 12h18M3 6h18M3 18h18" /> // ícone hambúrguer
-          )}
-        </svg>
-      </button>
+          <svg
+            className="h-6 w-6"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth={2}
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            viewBox="0 0 24 24"
+          >
+            {menuOpen ? (
+              <path d="M6 18L18 6M6 6l12 12" />
+            ) : (
+              <path d="M3 12h18M3 6h18M3 18h18" />
+            )}
+          </svg>
+        </button>
 
       {/* Menu desktop */}
       <nav className="hidden md:flex items-center space-x-6 text-sm font-semibold text-white/80 z-20">
@@ -67,7 +76,6 @@ export default function Header() {
         </Link>
       </nav>
 
-      {/* Menu mobile */}
       {menuOpen && (
         <nav
           className="absolute top-full right-0 mt-2 w-52 rounded-2xl border border-white/10 bg-slate-950/95 p-2 shadow-xl flex flex-col z-10"

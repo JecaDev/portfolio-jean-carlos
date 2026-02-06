@@ -6,7 +6,7 @@ interface PostProps{
 }
 
 interface ResponseProps {
-    posts: PostProps[]
+  posts: PostProps[]
 }
 
 import PageHeader from '../../components/ui/PageHeader'

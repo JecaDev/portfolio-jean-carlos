@@ -1,4 +1,5 @@
-'use client'
+import PortfolioClient from '@/components/portfolio/PortfolioClient'
+import { getPhotoProjects } from '@/lib/projects'
 
 import Image from 'next/image'
 import { useEffect, useMemo, useState } from 'react'
