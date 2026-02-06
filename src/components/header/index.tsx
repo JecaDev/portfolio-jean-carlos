@@ -8,7 +8,7 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
 
   return (
-    <header className="bg-zinc-950 shadow-md py-4 px-6 flex items-center justify-between relative">
+    <header className="sticky top-0 z-30 border-b border-white/10 bg-slate-950/80 px-6 py-4 backdrop-blur">
       {/* Logo + Nome */}
       <Link href="/" className="flex items-center space-x-3 z-20">
         <Image
@@ -19,14 +19,14 @@ export default function Header() {
           className="rounded-full"
           priority
         />
-        <span className="text-yellow-400 text-lg font-bold tracking-wide whitespace-nowrap">
+        <span className="text-yellow-300 text-lg font-semibold tracking-wide whitespace-nowrap">
           Jean Carlos • Foto & Vídeo
         </span>
       </Link>
 
       {/* Botão Menu Mobile */}
       <button
-        className="text-yellow-400 md:hidden focus:outline-none z-20"
+        className="text-yellow-300 md:hidden focus:outline-none z-20"
         aria-label="Abrir menu"
         onClick={() => setMenuOpen(!menuOpen)}
       >
@@ -49,17 +49,20 @@ export default function Header() {
       </button>
 
       {/* Menu desktop */}
-      <nav className="hidden md:flex space-x-6 z-20">
-        <Link href="/" className="text-yellow-400 hover:text-white transition-colors duration-200 font-medium">
+      <nav className="hidden md:flex items-center space-x-6 text-sm font-semibold text-white/80 z-20">
+        <Link href="/" className="transition-colors duration-200 hover:text-yellow-200">
           Home
         </Link>
-        <Link href="/portfolio" className="text-yellow-400 hover:text-white transition-colors duration-200 font-medium">
+        <Link href="/portfolio" className="transition-colors duration-200 hover:text-yellow-200">
           Portfólio
         </Link>
-        <Link href="/sobre" className="text-yellow-400 hover:text-white transition-colors duration-200 font-medium">
+        <Link href="/sobre" className="transition-colors duration-200 hover:text-yellow-200">
           Sobre
         </Link>
-        <Link href="/contato" className="text-yellow-400 hover:text-white transition-colors duration-200 font-medium">
+        <Link href="/servicos" className="transition-colors duration-200 hover:text-yellow-200">
+          Serviços
+        </Link>
+        <Link href="/contato" className="transition-colors duration-200 hover:text-yellow-200">
           Contato
         </Link>
       </nav>
@@ -67,19 +70,22 @@ export default function Header() {
       {/* Menu mobile */}
       {menuOpen && (
         <nav
-          className="absolute top-full right-0 mt-2 w-48 bg-black border border-yellow-400 rounded-md shadow-lg flex flex-col z-10"
+          className="absolute top-full right-0 mt-2 w-52 rounded-2xl border border-white/10 bg-slate-950/95 p-2 shadow-xl flex flex-col z-10"
           onClick={() => setMenuOpen(false)} // fecha menu ao clicar em link
 >
-          <Link href="/" className="px-4 py-3 text-yellow-400 hover:bg-yellow-400 hover:text-black transition-colors font-medium">
+          <Link href="/" className="rounded-xl px-4 py-3 text-sm font-semibold text-white/80 transition-colors hover:bg-white/10 hover:text-white">
             Home
           </Link>
-          <Link href="/portfolio" className="px-4 py-3 text-yellow-400 hover:bg-yellow-400 hover:text-black transition-colors font-medium">
+          <Link href="/portfolio" className="rounded-xl px-4 py-3 text-sm font-semibold text-white/80 transition-colors hover:bg-white/10 hover:text-white">
             Portfólio
           </Link>
-          <Link href="/sobre" className="px-4 py-3 text-yellow-400 hover:bg-yellow-400 hover:text-black transition-colors font-medium">
+          <Link href="/sobre" className="rounded-xl px-4 py-3 text-sm font-semibold text-white/80 transition-colors hover:bg-white/10 hover:text-white">
             Sobre
           </Link>
-          <Link href="/contato" className="px-4 py-3 text-yellow-400 hover:bg-yellow-400 hover:text-black transition-colors font-medium">
+          <Link href="/servicos" className="rounded-xl px-4 py-3 text-sm font-semibold text-white/80 transition-colors hover:bg-white/10 hover:text-white">
+            Serviços
+          </Link>
+          <Link href="/contato" className="rounded-xl px-4 py-3 text-sm font-semibold text-white/80 transition-colors hover:bg-white/10 hover:text-white">
             Contato
           </Link>
         </nav>
