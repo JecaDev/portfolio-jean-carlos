@@ -1,6 +1,8 @@
 'use client'
 
 import { FaWhatsapp, FaInstagram, FaEnvelope } from 'react-icons/fa'
+import PageHeader from '../../components/ui/PageHeader'
+import PageShell from '../../components/ui/PageShell'
 
 export default function Contato() {
   const whatsappNumber = '+5571988601554' // seu número completo, ex: +5598999999999
@@ -8,49 +10,57 @@ export default function Contato() {
   const email = 'jeanmacedo1302@gmail.com'
 
   return (
-    <main className="bg-black min-h-screen flex flex-col items-center justify-center px-6 py-12 text-white">
-      <h1 className="text-4xl font-extrabold text-yellow-400 mb-12 drop-shadow-lg">
-        Fale comigo
-      </h1>
+    <PageShell containerClassName="flex min-h-screen flex-col justify-center">
+      <PageHeader
+        eyebrow="Contato"
+        title="Fale comigo"
+        description="Escolha o canal que preferir e vamos criar algo incrível juntos."
+      />
 
-      <div className="flex flex-col gap-6 w-full max-w-sm">
-        {/* WhatsApp */}
+      <div className="mx-auto grid w-full max-w-3xl gap-6 md:grid-cols-3">
         <a
           href={`https://wa.me/${whatsappNumber.replace(/\D/g, '')}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-4 bg-green-600 hover:bg-green-700 transition rounded-lg px-6 py-4 shadow-lg transform hover:-translate-y-1 hover:shadow-2xl"
+          className="group flex flex-col items-center gap-4 rounded-3xl border border-white/10 bg-gradient-to-br from-emerald-400/20 via-emerald-500/10 to-transparent px-6 py-8 text-center shadow-lg shadow-black/30 transition hover:-translate-y-1"
         >
-          <FaWhatsapp size={28} />
-          <span className="text-lg font-semibold">WhatsApp</span>
+          <span className="grid h-12 w-12 place-items-center rounded-full bg-white/10 text-2xl text-emerald-300 transition group-hover:scale-110">
+            <FaWhatsapp />
+          </span>
+          <span className="text-lg font-semibold text-white">WhatsApp</span>
+          <span className="text-sm text-white/60">Resposta rápida e direta</span>
         </a>
 
-        {/* Instagram */}
         <a
           href={`https://instagram.com/${instagramUser}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-4 bg-pink-600 hover:bg-pink-700 transition rounded-lg px-6 py-4 shadow-lg transform hover:-translate-y-1 hover:shadow-2xl"
+          className="group flex flex-col items-center gap-4 rounded-3xl border border-white/10 bg-gradient-to-br from-pink-400/20 via-fuchsia-500/10 to-transparent px-6 py-8 text-center shadow-lg shadow-black/30 transition hover:-translate-y-1"
         >
-          <FaInstagram size={28} />
-          <span className="text-lg font-semibold">Instagram</span>
+          <span className="grid h-12 w-12 place-items-center rounded-full bg-white/10 text-2xl text-pink-300 transition group-hover:scale-110">
+            <FaInstagram />
+          </span>
+          <span className="text-lg font-semibold text-white">Instagram</span>
+          <span className="text-sm text-white/60">Portfólio e bastidores</span>
         </a>
 
-        {/* Email */}
         <a
           href={`https://mail.google.com/mail/?view=cm&fs=1&to=${email}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-4 bg-yellow-400 text-black hover:bg-yellow-300 transition rounded-lg px-6 py-4 shadow-lg transform hover:-translate-y-1 hover:shadow-2xl"
+          className="group flex flex-col items-center gap-4 rounded-3xl border border-white/10 bg-gradient-to-br from-yellow-300/20 via-amber-400/10 to-transparent px-6 py-8 text-center shadow-lg shadow-black/30 transition hover:-translate-y-1"
         >
-          <FaEnvelope size={28} />
-          <span className="text-lg font-semibold">Enviar Email</span>
+          <span className="grid h-12 w-12 place-items-center rounded-full bg-white/10 text-2xl text-yellow-300 transition group-hover:scale-110">
+            <FaEnvelope />
+          </span>
+          <span className="text-lg font-semibold text-white">Enviar Email</span>
+          <span className="text-sm text-white/60">Propostas detalhadas</span>
         </a>
       </div>
 
-      <p className="mt-16 text-gray-400 text-sm text-center max-w-xs mx-auto">
+      <p className="mt-12 text-center text-sm text-white/60">
         Respondo rápido! Fique à vontade para entrar em contato pelo canal que preferir.
       </p>
-    </main>
+    </PageShell>
   )
 }

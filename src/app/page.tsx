@@ -3,84 +3,121 @@
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { FaWhatsapp, FaInstagram, FaEnvelope } from 'react-icons/fa'
+import PageShell from '../components/ui/PageShell'
 
 const email = 'jeanmacedo1302@gmail.com'
 
+const contactLinks = [
+  {
+    id: 'whatsapp',
+    label: 'WhatsApp',
+    href: 'https://wa.me/5571988601554',
+    icon: FaWhatsapp,
+    className: 'from-emerald-400/20 via-emerald-500/10 to-transparent text-emerald-300',
+  },
+  {
+    id: 'instagram',
+    label: 'Instagram',
+    href: 'https://instagram.com/gradedbyjean',
+    icon: FaInstagram,
+    className: 'from-pink-400/20 via-fuchsia-500/10 to-transparent text-pink-300',
+  },
+  {
+    id: 'email',
+    label: 'Email',
+    href: `https://mail.google.com/mail/?view=cm&fs=1&to=${email}`,
+    icon: FaEnvelope,
+    className: 'from-yellow-300/20 via-amber-400/10 to-transparent text-yellow-300',
+  },
+]
+
 export default function Home() {
   return (
-    <main className="bg-black text-white min-h-screen flex flex-col items-center justify-center px-6 py-16">
-      {/* Imagem de destaque */}
-      <motion.div
-        initial={{ scale: 0.95, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ delay: 0.5, duration: 0.8 }}
-        className="mt-1 mb-6 w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-yellow-400 shadow-xl"
-      >
-        <Image
-          src="/JeanCarlos.jpg"
-          alt="Jean Macêdo"
-          width={320}   // md:w-80 == 320px, ajustei para corresponder
-          height={320}
-          className="object-cover rounded-full"
-          priority  // carrega rápido pois é a imagem principal
-          placeholder="empty" // para usar blur, precisa de uma base64; sem ela, use "empty"
-        />
-      </motion.div>
-      {/* Hero Section */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="text-center max-w-3xl"
-      >
-        <h1 className="text-5xl md:text-6xl font-extrabold text-yellow-400 mb-6">
-          Bem-vindo ao meu portfólio
-        </h1>
-        <p className="text-lg md:text-xl text-gray-200 mb-8 leading-relaxed">
-          Eu sou <strong>Jean Macêdo</strong>, fotógrafo e videomaker apaixonado por capturar momentos únicos e transformar ideias em arte visual. Explore meus projetos e entre em contato para criarmos algo incrível juntos.
-        </p>
+    <main className="relative min-h-screen overflow-hidden bg-slate-950 text-white">
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute -top-24 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-yellow-400/20 blur-[120px]" />
+        <div className="absolute bottom-0 right-0 h-80 w-80 translate-x-1/3 translate-y-1/3 rounded-full bg-sky-500/20 blur-[140px]" />
+      </div>
 
-        {/* Botões de contato */}
-        <div className="flex justify-center gap-6 text-2xl">
-          <a
-            href="https://wa.me/5571988601554"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-green-500 hover:text-green-400 transition"
-            aria-label="WhatsApp"
+      <div className="relative mx-auto flex min-h-screen max-w-6xl flex-col justify-center px-6 py-16">
+        <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="space-y-6"
           >
-            <FaWhatsapp />
-          </a>
-          <a
-            href="https://instagram.com/gradedbyjean"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-pink-500 hover:text-pink-400 transition"
-            aria-label="Instagram"
+            <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm uppercase tracking-[0.25em] text-white/70">
+              Portfólio criativo
+            </span>
+
+            <h1 className="text-4xl font-extrabold leading-tight text-yellow-300 sm:text-5xl lg:text-6xl">
+              Bem-vindo ao meu portfólio
+            </h1>
+
+            <p className="text-base text-white/80 sm:text-lg leading-relaxed">
+              Eu sou <strong className="text-white">Jean Macêdo</strong>, fotógrafo e videomaker apaixonado por capturar momentos únicos e transformar ideias em arte visual. Explore meus projetos e entre em contato para criarmos algo incrível juntos.
+            </p>
+
+            <div className="flex flex-wrap gap-4">
+              {contactLinks.map(({ id, label, href, icon: Icon, className }) => (
+                <motion.a
+                  key={id}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ y: -4 }}
+                  whileTap={{ scale: 0.98 }}
+                  className={`group flex items-center gap-3 rounded-2xl border border-white/10 bg-gradient-to-br px-5 py-3 text-sm font-semibold text-white/90 shadow-lg shadow-black/20 transition ${className}`}
+                  aria-label={label}
+                >
+                  <span className="grid h-10 w-10 place-items-center rounded-full bg-white/10 text-xl transition group-hover:scale-105">
+                    <Icon />
+                  </span>
+                  <span className="text-base">{label}</span>
+                </motion.a>
+              ))}
+            </div>
+
+            <motion.a
+              href="/contato"
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.98 }}
+              className="inline-flex items-center justify-center rounded-full bg-yellow-400 px-8 py-4 text-base font-bold text-slate-950 shadow-xl shadow-yellow-400/30 transition hover:bg-yellow-300"
+            >
+              Entrar em contato
+            </motion.a>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.96 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.9 }}
+            className="relative flex items-center justify-center"
           >
-            <FaInstagram />
-          </a>
-          <a
-            href={`https://mail.google.com/mail/?view=cm&fs=1&to=${email}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-yellow-400 hover:text-yellow-300 transition"
-            aria-label="Email"
-          >
-            <FaEnvelope />
-          </a>
+            <div className="absolute -inset-6 rounded-[40px] border border-white/10 bg-white/5 backdrop-blur-xl" />
+            <div className="relative overflow-hidden rounded-[32px] border border-white/20 bg-slate-900/60 p-6 shadow-2xl">
+              <div className="absolute -right-6 top-8 h-24 w-24 rounded-full bg-yellow-400/30 blur-2xl" />
+              <Image
+                src="/JeanCarlos.jpg"
+                alt="Jean Macêdo"
+                width={420}
+                height={520}
+                className="h-[420px] w-[320px] rounded-3xl object-cover sm:h-[460px] sm:w-[360px]"
+                priority
+                placeholder="empty"
+              />
+              <div className="mt-6 flex items-center justify-between rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white/70">
+                <span>Fotógrafo & Videomaker</span>
+                <span className="flex items-center gap-2 text-yellow-300">
+                  <span className="h-2 w-2 rounded-full bg-yellow-300" />
+                  Disponível
+                </span>
+              </div>
+            </div>
+          </motion.div>
         </div>
-
-        {/* CTA */}
-        <a
-          href="/contato"
-          className="mt-10 inline-block px-8 py-4 bg-yellow-400 text-black font-bold rounded-full hover:bg-yellow-300 transition shadow-lg"
-        >
-          Entrar em contato
-        </a>
-      </motion.div>
-
-      
+      </div>
     </main>
   )
 }
