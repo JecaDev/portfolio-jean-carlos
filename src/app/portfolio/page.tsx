@@ -6,7 +6,11 @@ import Lightbox from 'yet-another-react-lightbox'
 import 'yet-another-react-lightbox/styles.css'
 import PageHeader from '../../components/ui/PageHeader'
 import PageShell from '../../components/ui/PageShell'
-import type { PortfolioPayload } from '../../types/portfolio'
+import {
+  projetosComImagens,
+  projetosComVideos,
+  videosVerticais,
+} from '../../data/portfolio'
 
 export default function Portfolio() {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
@@ -43,62 +47,52 @@ export default function Portfolio() {
         <div className="flex items-center justify-between">
           <h2 className="text-2xl font-semibold text-yellow-200">Portfólio Fotográfico</h2>
           <span className="text-sm text-white/60">
-            {imagesProjects.length} projetos disponíveis
+            {projetosComImagens.length} projetos disponíveis
           </span>
         </div>
-        {isLoading ? (
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {Array.from({ length: 6 }).map((_, index) => (
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          {projetosComImagens.map((project, index) => {
+            const coverImage = project.images[0]?.filename ?? 'foto1.jpg'
+            const capa = `${project.folder}${coverImage}`
+            const lightboxSlides = project.images.map((img) => ({
+              src: `${project.folder}${img.filename}`,
+              title: img.title,
+            }))
+
+            return (
               <div
                 key={index}
-                className="h-64 animate-pulse rounded-3xl border border-white/10 bg-white/5"
-              />
-            ))}
-          </div>
-        ) : (
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {imagesProjects.map((project, index) => {
-              const coverImage = project.cover || project.images[0] || 'foto1.jpg'
-              const capa = `${project.folder}${coverImage}`
-              const lightboxSlides = project.images.map((image) => ({
-                src: `${project.folder}${image}`,
-              }))
-
-              return (
-                <div
-                  key={project.title}
-                  className="group cursor-pointer rounded-3xl border border-white/10 bg-white/5 p-5 shadow-lg shadow-black/30 transition hover:-translate-y-1 hover:border-white/20"
-                  onClick={() => setOpenIndex(index)}
-                >
-                  <div className="relative mb-5 aspect-[4/3] w-full overflow-hidden rounded-2xl border border-white/10">
-                    <Image
-                      src={capa}
-                      alt={`Capa do projeto ${project.title}`}
-                      fill
-                      className="object-cover object-[center_40%] transition duration-500 group-hover:scale-105"
-                    />
-                  </div>
-                  <h3 className="text-lg font-semibold text-white">{project.title}</h3>
-                  <p className="mt-2 text-sm text-white/60">{project.images.length} fotos neste projeto</p>
-
-                  {openIndex === index && (
-                    <Lightbox
-                      open={true}
-                      close={() => setOpenIndex(null)}
-                      slides={lightboxSlides}
-                    />
-                  )}
+                className="group cursor-pointer rounded-3xl border border-white/10 bg-white/5 p-5 shadow-lg shadow-black/30 transition hover:-translate-y-1 hover:border-white/20"
+                onClick={() => setOpenIndex(index)}
+              >
+                <div className="relative mb-5 aspect-[4/3] w-full overflow-hidden rounded-2xl border border-white/10">
+                  <Image
+                    src={capa}
+                    alt={`Capa do projeto ${project.title}`}
+                    fill
+                    className="object-cover object-[center_40%] transition duration-500 group-hover:scale-105"
+                  />
                 </div>
-              )
-            })}
-          </div>
-        )}
+                <h3 className="text-lg font-semibold text-white">{project.title}</h3>
+                <p className="mt-2 text-sm text-white/60">{project.images.length} fotos neste projeto</p>
+
+                {openIndex === index && (
+                  <Lightbox
+                    open={true}
+                    close={() => setOpenIndex(null)}
+                    slides={lightboxSlides}
+                  />
+                )}
+              </div>
+            )
+          })}
+        </div>
       </section>
 
       <section className="mt-16 space-y-8">
         <h2 className="text-2xl font-semibold text-yellow-200">Portfólio em Vídeo</h2>
         <div className="grid gap-6 md:grid-cols-2">
-          {videos.map((video, index) => (
+          {projetosComVideos.map((video, index) => (
             <div
               key={index}
               className="overflow-hidden rounded-3xl border border-white/10 bg-white/5 shadow-lg shadow-black/30"
@@ -124,7 +118,7 @@ export default function Portfolio() {
       <section className="mt-16 space-y-8">
         <h2 className="text-2xl font-semibold text-yellow-200">Vídeos Verticais</h2>
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {shorts.map((video, index) => (
+          {videosVerticais.map((video, index) => (
             <div
               key={index}
               className="overflow-hidden rounded-3xl border border-white/10 bg-white/5 shadow-lg shadow-black/30"

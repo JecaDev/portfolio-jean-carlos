@@ -33,7 +33,13 @@ const contactLinks = [
 
 export default function Home() {
   return (
-    <PageShell containerClassName="flex min-h-screen flex-col justify-center">
+    <main className="relative min-h-screen overflow-hidden bg-slate-950 text-white">
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute -top-24 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-yellow-400/20 blur-[120px]" />
+        <div className="absolute bottom-0 right-0 h-80 w-80 translate-x-1/3 translate-y-1/3 rounded-full bg-sky-500/20 blur-[140px]" />
+      </div>
+
+      <div className="relative mx-auto flex min-h-screen max-w-6xl flex-col justify-center px-6 py-16">
         <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
@@ -111,6 +117,7 @@ export default function Home() {
             </div>
           </motion.div>
         </div>
-    </PageShell>
+      </div>
+    </main>
   )
 }
