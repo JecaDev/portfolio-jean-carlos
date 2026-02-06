@@ -1,9 +1,19 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { FaCamera, FaVideo, FaPalette, FaInstagram, FaWhatsapp, FaEnvelope, FaLinkedin, FaDownload, FaQuoteLeft } from 'react-icons/fa'
+import {
+  FaCamera,
+  FaVideo,
+  FaPalette,
+  FaInstagram,
+  FaWhatsapp,
+  FaEnvelope,
+  FaLinkedin,
+  FaDownload,
+  FaQuoteLeft,
+} from 'react-icons/fa'
 
-export default function Sobre() {
+export default function Servicos() {
   const instagramUser = 'gradedbyjean'
   const whatsappNumber = '+5571988601554'
   const email = 'jeanmacedo1302@gmail.com'
@@ -11,102 +21,152 @@ export default function Sobre() {
   const cvPath = '/curriculo-jeanmacedo.pdf'
 
   return (
-    <main className="bg-black text-white min-h-screen px-6 py-16 flex flex-col items-center">
-      {/* Título principal */}
-      <motion.h1
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7 }}
-        className="text-5xl font-extrabold text-yellow-400 mb-12 text-center"
-      >
-        Sobre mim
-      </motion.h1>
+    <main className="relative min-h-screen bg-slate-950 px-6 py-16 text-white">
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute -top-32 left-1/3 h-72 w-72 rounded-full bg-yellow-400/10 blur-[140px]" />
+        <div className="absolute bottom-0 right-0 h-80 w-80 rounded-full bg-cyan-500/10 blur-[160px]" />
+      </div>
 
-      {/* Seção principal */}
-      <div className="flex flex-col-reverse md:flex-row items-center max-w-6xl w-full gap-12 mb-20">
-        <div className="flex-1 space-y-6">
-          <p className="text-lg leading-relaxed">
+      <div className="relative mx-auto flex max-w-6xl flex-col gap-16">
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          className="flex flex-col gap-3"
+        >
+          <span className="text-xs uppercase tracking-[0.4em] text-white/50">Serviços</span>
+          <h1 className="text-4xl font-bold text-yellow-300 sm:text-5xl">
+            Produções que conectam pessoas e marcas
+          </h1>
+          <p className="max-w-3xl text-sm text-white/70 sm:text-base">
             Olá! Eu sou <strong>Jean Macêdo</strong>, apaixonado por fotografia e vídeo profissional. Transformo visões e emoções em imagens que impactam e contam histórias com autenticidade.
           </p>
+        </motion.div>
 
-          <p className="text-lg leading-relaxed">
+        <section className="grid gap-8 rounded-3xl border border-white/10 bg-white/5 p-8 shadow-xl shadow-black/40">
+          <p className="text-lg leading-relaxed text-white/80">
             Com experiência em retratos, eventos e produção audiovisual, busco sempre inovar e conectar com o público, entregando qualidade visual e narrativa.
           </p>
-
-          <ul className="list-disc list-inside space-y-1 text-lg">
+          <ul className="space-y-2 text-lg text-white/80">
             <li>📸 Fotografia profissional (retrato, eventos, editorial)</li>
             <li>🎬 Produção e edição de vídeo</li>
             <li>🎨 Direção criativa e color grading</li>
           </ul>
-
-          <a
-            href={cvPath}
-            download
-            className="inline-flex items-center gap-2 bg-yellow-400 text-black font-semibold px-6 py-3 rounded hover:bg-yellow-300 transition mt-4 shadow-lg"
-          >
-            <FaDownload />
-            Baixar Currículo
-          </a>
-
-          <div className="flex gap-6 pt-6 text-3xl">
-            <a href={`https://wa.me/${whatsappNumber.replace(/\D/g, '')}`} target="_blank" className="text-green-500 hover:text-green-400"><FaWhatsapp /></a>
-            <a href={`https://instagram.com/${instagramUser}`} target="_blank" className="text-pink-500 hover:text-pink-400"><FaInstagram /></a>
-            <a href={`mailto:${email}`} className="text-yellow-400 hover:text-yellow-300"><FaEnvelope /></a>
-            <a href={`https://linkedin.com/in/${linkedinUser}`} target="_blank" className="text-blue-500 hover:text-blue-400"><FaLinkedin /></a>
+          <div className="flex flex-wrap items-center gap-4">
+            <a
+              href={cvPath}
+              download
+              className="inline-flex items-center gap-2 rounded-full bg-yellow-400 px-6 py-3 text-sm font-semibold text-slate-950 transition hover:bg-yellow-300"
+            >
+              <FaDownload />
+              Baixar Currículo
+            </a>
+            <div className="flex items-center gap-3 text-2xl">
+              <a
+                href={`https://wa.me/${whatsappNumber.replace(/\D/g, '')}`}
+                target="_blank"
+                rel="noreferrer"
+                className="rounded-full bg-white/5 p-3 text-green-400 transition hover:bg-white/10"
+              >
+                <FaWhatsapp />
+              </a>
+              <a
+                href={`https://instagram.com/${instagramUser}`}
+                target="_blank"
+                rel="noreferrer"
+                className="rounded-full bg-white/5 p-3 text-pink-400 transition hover:bg-white/10"
+              >
+                <FaInstagram />
+              </a>
+              <a
+                href={`mailto:${email}`}
+                className="rounded-full bg-white/5 p-3 text-yellow-300 transition hover:bg-white/10"
+              >
+                <FaEnvelope />
+              </a>
+              <a
+                href={`https://linkedin.com/in/${linkedinUser}`}
+                target="_blank"
+                rel="noreferrer"
+                className="rounded-full bg-white/5 p-3 text-sky-400 transition hover:bg-white/10"
+              >
+                <FaLinkedin />
+              </a>
+            </div>
           </div>
-        </div>
+        </section>
 
-        {/* Imagem */}
-        <div className="flex-shrink-0 w-64 h-64 md:w-72 md:h-72 rounded-full overflow-hidden border-4 border-yellow-400 shadow-xl">
-          <img src="/JeanCarlos.jpg" alt="Jean Macêdo" className="object-cover w-full h-full" />
-        </div>
+        <section className="space-y-8">
+          <div>
+            <p className="text-xs uppercase tracking-[0.4em] text-white/50">Especialidades</p>
+            <h2 className="text-3xl font-bold text-yellow-300">O que posso criar</h2>
+          </div>
+          <div className="grid gap-6 md:grid-cols-3">
+            {[
+              {
+                icon: <FaCamera size={28} />,
+                title: 'Fotografia Profissional',
+                desc: 'Retratos, ensaios, eventos e editoriais com direção e qualidade.',
+              },
+              {
+                icon: <FaVideo size={28} />,
+                title: 'Vídeo e Edição',
+                desc: 'Produção audiovisual completa com narrativa impactante.',
+              },
+              {
+                icon: <FaPalette size={28} />,
+                title: 'Color Grading e Direção Criativa',
+                desc: 'Refino visual e identidade única para cada projeto.',
+              },
+            ].map((s, i) => (
+              <div
+                key={i}
+                className="rounded-3xl border border-white/10 bg-white/5 p-6 shadow-lg shadow-black/40 transition hover:-translate-y-1 hover:border-yellow-400/40"
+              >
+                <div className="mb-4 text-yellow-300">{s.icon}</div>
+                <h3 className="mb-2 text-lg font-semibold">{s.title}</h3>
+                <p className="text-sm text-white/70">{s.desc}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="space-y-8">
+          <div>
+            <p className="text-xs uppercase tracking-[0.4em] text-white/50">Depoimentos</p>
+            <h2 className="text-3xl font-bold text-yellow-300">Clientes satisfeitos</h2>
+          </div>
+          <div className="grid gap-6 md:grid-cols-2">
+            {[
+              {
+                nome: 'Marina S.',
+                texto:
+                  'A sensibilidade do Jean ao capturar momentos foi além do esperado. As fotos do meu evento ficaram incríveis!',
+              },
+              {
+                nome: 'Carlos A.',
+                texto:
+                  'Trabalhar com Jean foi fácil, rápido e com um resultado impecável. Recomendo de olhos fechados.',
+              },
+            ].map((dep, i) => (
+              <div
+                key={i}
+                className="relative rounded-3xl border border-white/10 bg-white/5 p-6 shadow-lg shadow-black/40"
+              >
+                <FaQuoteLeft className="absolute top-6 left-6 text-yellow-300/70" />
+                <p className="pl-8 text-base italic text-white/80">{dep.texto}</p>
+                <p className="mt-4 text-right text-sm font-semibold text-yellow-200">
+                  — {dep.nome}
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <blockquote className="rounded-3xl border border-white/10 bg-white/5 px-6 py-6 text-center text-lg italic text-yellow-200">
+          "Transformando momentos em memórias inesquecíveis através da arte visual."
+        </blockquote>
       </div>
-
-      {/* Sessão de Serviços */}
-      <section className="w-full max-w-6xl mb-20">
-        <h2 className="text-3xl text-yellow-400 font-bold mb-8 text-center">Serviços</h2>
-        <div className="grid md:grid-cols-3 gap-8">
-          {[
-            { icon: <FaCamera size={32} />, title: 'Fotografia Profissional', desc: 'Retratos, ensaios, eventos e editoriais com direção e qualidade.' },
-            { icon: <FaVideo size={32} />, title: 'Vídeo e Edição', desc: 'Produção audiovisual completa com narrativa impactante.' },
-            { icon: <FaPalette size={32} />, title: 'Color Grading e Direção Criativa', desc: 'Refino visual e identidade única para cada projeto.' },
-          ].map((s, i) => (
-            <div key={i} className="bg-neutral-900 p-6 rounded shadow-lg text-center hover:bg-neutral-800 transition">
-              <div className="text-yellow-400 mb-3">{s.icon}</div>
-              <h3 className="text-xl font-bold mb-2">{s.title}</h3>
-              <p className="text-gray-300">{s.desc}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Sessão de Depoimentos */}
-      <section className="w-full max-w-6xl mb-20">
-        <h2 className="text-3xl text-yellow-400 font-bold mb-10 text-center">Depoimentos</h2>
-        <div className="grid md:grid-cols-2 gap-8">
-          {[
-            {
-              nome: 'Marina S.',
-              texto: 'A sensibilidade do Jean ao capturar momentos foi além do esperado. As fotos do meu evento ficaram incríveis!',
-            },
-            {
-              nome: 'Carlos A.',
-              texto: 'Trabalhar com Jean foi fácil, rápido e com um resultado impecável. Recomendo de olhos fechados.',
-            },
-          ].map((dep, i) => (
-            <div key={i} className="bg-neutral-900 p-6 rounded shadow-lg relative">
-              <FaQuoteLeft className="absolute top-4 left-4 text-yellow-400 text-2xl opacity-60" />
-              <p className="text-lg italic mb-4 pl-6">{dep.texto}</p>
-              <p className="text-yellow-300 font-semibold text-right">— {dep.nome}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Frase final */}
-      <blockquote className="mt-16 text-center italic text-yellow-300 text-xl font-medium max-w-3xl">
-        "Transformando momentos em memórias inesquecíveis através da arte visual."
-      </blockquote>
     </main>
   )
 }

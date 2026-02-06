@@ -1,12 +1,7 @@
 import './globals.css'
 import Header from '../components/header'
-import { Inter } from 'next/font/google'
-import { SpeedInsights } from "@vercel/speed-insights/next"
+import { SpeedInsights } from '@vercel/speed-insights/next'
 import type { Metadata } from 'next'
-import { Oswald } from "next/font/google"
-
-const inter = Inter({ subsets: ['latin'] })
-const oswald = Oswald ({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Portfólio Jean Carlos Macêdo',
@@ -22,12 +17,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt">
-      <body className={oswald.className}>
+      <body className="bg-slate-950 text-white font-sans">
         <Header />
-        <main>{children}</main>
-        <SpeedInsights/>
+        <div>{children}</div>
+        <SpeedInsights />
       </body>
     </html>
   )
 }
-

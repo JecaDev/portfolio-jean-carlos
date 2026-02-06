@@ -8,81 +8,91 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
 
   return (
-    <header className="bg-zinc-950 shadow-md py-4 px-6 flex items-center justify-between relative">
-      {/* Logo + Nome */}
-      <Link href="/" className="flex items-center space-x-3 z-20">
-        <Image
-          src="/logo.png"
-          alt="Logo do portfólio"
-          width={36}
-          height={36}
-          className="rounded-full"
-          priority
-        />
-        <span className="text-yellow-400 text-lg font-bold tracking-wide whitespace-nowrap">
-          Jean Carlos • Foto & Vídeo
-        </span>
-      </Link>
+    <header className="sticky top-0 z-50 border-b border-white/10 bg-slate-950/80 backdrop-blur-lg">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+        <Link href="/" className="flex items-center gap-3">
+          <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-yellow-400/10">
+            <Image
+              src="/logo.png"
+              alt="Logo do portfólio"
+              width={36}
+              height={36}
+              className="rounded-full"
+              priority
+            />
+          </span>
+          <div>
+            <span className="block text-sm uppercase tracking-[0.3em] text-white/60">
+              Portfólio
+            </span>
+            <span className="text-lg font-semibold text-yellow-300">
+              Jean Carlos • Foto & Vídeo
+            </span>
+          </div>
+        </Link>
 
-      {/* Botão Menu Mobile */}
-      <button
-        className="text-yellow-400 md:hidden focus:outline-none z-20"
-        aria-label="Abrir menu"
-        onClick={() => setMenuOpen(!menuOpen)}
-      >
-        {/* Ícone hambúrguer */}
-        <svg
-          className="w-8 h-8"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth={2}
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          viewBox="0 0 24 24"
+        <button
+          className="rounded-full border border-yellow-400/40 p-2 text-yellow-300 md:hidden"
+          aria-label="Abrir menu"
+          onClick={() => setMenuOpen(!menuOpen)}
         >
-          {menuOpen ? (
-            <path d="M6 18L18 6M6 6l12 12" /> // ícone "X" quando aberto
-          ) : (
-            <path d="M3 12h18M3 6h18M3 18h18" /> // ícone hambúrguer
-          )}
-        </svg>
-      </button>
+          <svg
+            className="h-6 w-6"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth={2}
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            viewBox="0 0 24 24"
+          >
+            {menuOpen ? (
+              <path d="M6 18L18 6M6 6l12 12" />
+            ) : (
+              <path d="M3 12h18M3 6h18M3 18h18" />
+            )}
+          </svg>
+        </button>
 
-      {/* Menu desktop */}
-      <nav className="hidden md:flex space-x-6 z-20">
-        <Link href="/" className="text-yellow-400 hover:text-white transition-colors duration-200 font-medium">
-          Home
-        </Link>
-        <Link href="/portfolio" className="text-yellow-400 hover:text-white transition-colors duration-200 font-medium">
-          Portfólio
-        </Link>
-        <Link href="/sobre" className="text-yellow-400 hover:text-white transition-colors duration-200 font-medium">
-          Sobre
-        </Link>
-        <Link href="/contato" className="text-yellow-400 hover:text-white transition-colors duration-200 font-medium">
-          Contato
-        </Link>
-      </nav>
-
-      {/* Menu mobile */}
-      {menuOpen && (
-        <nav
-          className="absolute top-full right-0 mt-2 w-48 bg-black border border-yellow-400 rounded-md shadow-lg flex flex-col z-10"
-          onClick={() => setMenuOpen(false)} // fecha menu ao clicar em link
->
-          <Link href="/" className="px-4 py-3 text-yellow-400 hover:bg-yellow-400 hover:text-black transition-colors font-medium">
-            Home
-          </Link>
-          <Link href="/portfolio" className="px-4 py-3 text-yellow-400 hover:bg-yellow-400 hover:text-black transition-colors font-medium">
-            Portfólio
-          </Link>
-          <Link href="/sobre" className="px-4 py-3 text-yellow-400 hover:bg-yellow-400 hover:text-black transition-colors font-medium">
-            Sobre
-          </Link>
-          <Link href="/contato" className="px-4 py-3 text-yellow-400 hover:bg-yellow-400 hover:text-black transition-colors font-medium">
-            Contato
-          </Link>
+        <nav className="hidden items-center gap-6 md:flex">
+          {[
+            { href: '/', label: 'Home' },
+            { href: '/portfolio', label: 'Portfólio' },
+            { href: '/sobre', label: 'Sobre' },
+            { href: '/contato', label: 'Contato' },
+          ].map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="text-sm font-semibold uppercase tracking-[0.2em] text-white/70 transition hover:text-yellow-300"
+            >
+              {item.label}
+            </Link>
+          ))}
         </nav>
+      </div>
+
+      {menuOpen && (
+        <div className="border-t border-white/10 bg-slate-950/90 md:hidden">
+          <nav
+            className="mx-auto flex max-w-6xl flex-col gap-2 px-6 py-4"
+            onClick={() => setMenuOpen(false)}
+          >
+            {[
+              { href: '/', label: 'Home' },
+              { href: '/portfolio', label: 'Portfólio' },
+              { href: '/sobre', label: 'Sobre' },
+              { href: '/contato', label: 'Contato' },
+            ].map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="rounded-2xl border border-white/10 px-4 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-white/80 transition hover:border-yellow-400/40 hover:text-yellow-300"
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+        </div>
       )}
     </header>
   )
