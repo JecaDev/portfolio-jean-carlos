@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import Lightbox from 'yet-another-react-lightbox'
 import 'yet-another-react-lightbox/styles.css'
 import PageHeader from '../../components/ui/PageHeader'
@@ -14,6 +14,26 @@ import {
 
 export default function Portfolio() {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
+  const [portfolio, setPortfolio] = useState<PortfolioPayload | null>(null)
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    const loadPortfolio = async () => {
+      try {
+        const response = await fetch('/data/portfolio.json', { cache: 'no-store' })
+        const payload: PortfolioPayload = await response.json()
+        setPortfolio(payload)
+      } finally {
+        setIsLoading(false)
+      }
+    }
+
+    loadPortfolio()
+  }, [])
+
+  const imagesProjects = useMemo(() => portfolio?.images ?? [], [portfolio])
+  const videos = useMemo(() => portfolio?.videos ?? [], [portfolio])
+  const shorts = useMemo(() => portfolio?.shorts ?? [], [portfolio])
 
   return (
     <PageShell>
