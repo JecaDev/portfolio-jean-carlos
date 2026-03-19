@@ -12,6 +12,123 @@ import {
   videosVerticais,
 } from '../../data/portfolio'
 
+function VideoCarousel({ videos, itemsPerPage }: {
+  videos: { title: string; youtubeId: string }[]
+  itemsPerPage: number
+}) {
+  const [page, setPage] = useState(0)
+  const totalPages = Math.ceil(videos.length / itemsPerPage)
+  const hasPrev = page > 0
+  const hasNext = page < totalPages - 1
+
+  const goPrev = () => setPage((p) => Math.max(0, p - 1))
+  const goNext = () => setPage((p) => Math.min(totalPages - 1, p + 1))
+
+  const aspectClass = itemsPerPage === 1 ? 'aspect-video' : 'aspect-[9/16]'
+
+  // Cada “página” ocupa 80% da viewport para deixar 10% de cada lado com os itens adjacentes visíveis
+  const pageWidthPercent = 80
+  const slidingWidth = totalPages * pageWidthPercent
+
+  return (
+    <div className="relative flex items-center gap-3 md:gap-4">
+      {/* Botão anterior */}
+      <div className="flex shrink-0 items-center">
+        {hasPrev && (
+          <button
+            onClick={goPrev}
+            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white/90 transition hover:bg-white/20 hover:text-white md:h-12 md:w-12"
+            aria-label="Vídeo anterior"
+          >
+            <svg className="h-5 w-5 md:h-6 md:w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+        )}
+      </div>
+
+      {/* Área do carrossel: mostra ~80% da página atual e um pouco das adjacentes */}
+      <div className="min-w-0 flex-1 overflow-hidden">
+        <div
+          className="flex transition-transform duration-300 ease-out"
+          style={{
+            width: `${slidingWidth}%`,
+            transform: `translateX(-${(page * 100) / totalPages}%)`,
+          }}
+        >
+          {Array.from({ length: totalPages }).map((_, pageIndex) => {
+            const start = pageIndex * itemsPerPage
+            const pageVideos = videos.slice(start, start + itemsPerPage)
+            const isCurrent = pageIndex === page
+
+            return (
+              <div
+                key={pageIndex}
+                className={`flex shrink-0 gap-6 pr-6 md:pr-8 ${
+                  itemsPerPage === 3
+                    ? pageVideos.length >= 3
+                      ? 'justify-center'
+                      : 'justify-start'
+                    : ''
+                }`}
+                style={{
+                  width: `${100 / totalPages}%`,
+                  opacity: isCurrent ? 1 : 0.35,
+                  transition: 'opacity 0.25s ease-out',
+                }}
+              >
+                {pageVideos.map((video) => (
+                  <div
+                    key={video.youtubeId}
+                    className={`flex flex-col overflow-hidden rounded-3xl border border-white/10 bg-white/5 shadow-lg shadow-black/30 ${
+                      itemsPerPage === 3 ? 'min-w-0 max-w-[260px] flex-1 basis-0' : 'min-w-0 flex-1'
+                    }`}
+                  >
+                    <div className={`w-full shrink-0 ${aspectClass}`}>
+                      <iframe
+                        className="h-full w-full"
+                        src={`https://www.youtube.com/embed/${video.youtubeId}`}
+                        title={video.title}
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                        loading="lazy"
+                      />
+                    </div>
+                    <div
+                      className={`flex shrink-0 items-center justify-start px-4 ${
+                        itemsPerPage === 1 ? 'min-h-[4.5rem] py-4' : 'h-14 py-3'
+                      }`}
+                    >
+                      <h3 className="line-clamp-2 w-full text-left text-base font-semibold leading-snug text-white">
+                        {video.title}
+                      </h3>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )
+          })}
+        </div>
+      </div>
+
+      {/* Botão próximo */}
+      <div className="flex shrink-0 items-center">
+        {hasNext && (
+          <button
+            onClick={goNext}
+            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white/90 transition hover:bg-white/20 hover:text-white md:h-12 md:w-12"
+            aria-label="Próximo vídeo"
+          >
+            <svg className="h-5 w-5 md:h-6 md:w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        )}
+      </div>
+    </div>
+  )
+}
+
 export default function Portfolio() {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
 
@@ -69,55 +186,14 @@ export default function Portfolio() {
         </div>
       </section>
 
-      <section className="mt-16 space-y-8">
+      <section className="mt-16 space-y-6">
         <h2 className="text-2xl font-semibold text-yellow-200">Portfólio em Vídeo</h2>
-        <div className="grid gap-6 md:grid-cols-2">
-          {projetosComVideos.map((video, index) => (
-            <div
-              key={index}
-              className="overflow-hidden rounded-3xl border border-white/10 bg-white/5 shadow-lg shadow-black/30"
-            >
-              <div className="w-full aspect-video">
-                <iframe
-                  className="h-full w-full"
-                  src={`https://www.youtube.com/embed/${video.youtubeId}`}
-                  title={video.title}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  loading="lazy"
-                />
-              </div>
-              <div className="p-4">
-                <h3 className="text-base font-semibold text-white">{video.title}</h3>
-              </div>
-            </div>
-          ))}
-        </div>
+        <VideoCarousel videos={projetosComVideos} itemsPerPage={1} />
       </section>
 
-      <section className="mt-16 space-y-8">
+      <section className="mt-16 space-y-6">
         <h2 className="text-2xl font-semibold text-yellow-200">Vídeos Verticais</h2>
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {videosVerticais.map((video, index) => (
-            <div
-              key={index}
-              className="overflow-hidden rounded-3xl border border-white/10 bg-white/5 shadow-lg shadow-black/30"
-            >
-              <div className="w-full aspect-[9/16]">
-                <iframe
-                  src={`https://www.youtube.com/embed/${video.youtubeId}`}
-                  title={video.title}
-                  allow="autoplay; clipboard-write; encrypted-media; picture-in-picture"
-                  allowFullScreen
-                  className="w-full h-full"
-                />
-              </div>
-              <div className="p-4">
-                <h3 className="text-base font-semibold text-white">{video.title}</h3>
-              </div>
-            </div>
-          ))}
-        </div>
+        <VideoCarousel videos={videosVerticais} itemsPerPage={3} />
       </section>
     </PageShell>
   )
