@@ -59,10 +59,16 @@ const createImageProject = ({
 
 export const projetosComImagens: ProjetoImagem[] = [
   createImageProject({
-    title: 'Pré-Wedding - Ítalo',
+    title: 'Pré Wedding - Ítalo',
     folder: '/projetos/pre-wedding-Italo/',
     coverTitle: 'Pré-Wedding - Ítalo',
     sequences: [{ start: 2, end: 17, prefix: 'foto' }],
+  }),
+  createImageProject({
+    title: 'MuzenBela 2026',
+    folder: '/projetos/muzenbela2026/',
+    coverTitle: 'Muzenza - Concurso MuzenBela 2026',
+    sequences: [{ start: 2, end: 30, prefix: 'foto' }],
   }),
   createImageProject({
     title: 'Afrofuturismo 2025',
@@ -72,7 +78,7 @@ export const projetosComImagens: ProjetoImagem[] = [
     sequences: [{ start: 2, end: 30, prefix: 'foto' }],
   }),
   createImageProject({
-    title: 'Cobertura Fotográfica de Evento - Design & Dendê 2025',
+    title: 'Cobertura de Evento - Design & Dendê 2025',
     folder: '/projetos/design&dende/',
     coverTitle: 'Design & Dendê 2025',
     sequences: [{ start: 2, end: 32, prefix: 'foto' }],
@@ -107,12 +113,6 @@ export const projetosComImagens: ProjetoImagem[] = [
     coverTitle: 'Aniversário de 15 Anos - Letícia',
     coverFile: 'foto2.jpg',
     sequences: [{ start: 3, end: 12, prefix: 'foto' }],
-  }),
-  createImageProject({
-    title: 'Registro Fotográfico - Pelourinho',
-    folder: '/projetos/pelourinho/',
-    coverTitle: 'Registro Fotográfico - Pelourinho',
-    sequences: [{ start: 2, end: 13, prefix: 'foto' }],
   }),
   createImageProject({
     title: 'Ensaio Fotográfico - Álbum de Trap',
