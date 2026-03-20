@@ -80,7 +80,7 @@ export default function Servicos() {
 
       {/* Depoimentos */}
       <section className="mt-16">
-        <h2 className="text-center text-2xl font-semibold text-yellow-200">Depoimentos</h2>
+        <h2 className="text-center text-xl font-semibold text-yellow-200 sm:text-2xl">Depoimentos</h2>
         <div className="mt-8 grid gap-6 md:grid-cols-2">
           {depoimentos.map((dep, i) => (
             <div
@@ -102,7 +102,7 @@ export default function Servicos() {
         transition={{ duration: 0.6, delay: 0.2 }}
         className="mt-16 flex flex-col items-center gap-6"
       >
-        <p className="text-center text-lg font-medium italic text-yellow-200">
+        <p className="text-center text-base font-medium italic text-yellow-200 sm:text-lg">
           "Transformando momentos em memórias inesquecíveis através da arte visual."
         </p>
 

@@ -12,9 +12,9 @@ export default function PageHeader({ eyebrow, title, description }: PageHeaderPr
           {eyebrow}
         </span>
       ) : null}
-      <h1 className="text-4xl font-extrabold text-yellow-300 sm:text-5xl">{title}</h1>
+      <h1 className="text-2xl font-extrabold text-yellow-300 sm:text-4xl lg:text-5xl">{title}</h1>
       {description ? (
-        <p className="mx-auto max-w-3xl text-base text-white/75 sm:text-lg">{description}</p>
+        <p className="mx-auto max-w-3xl text-sm text-white/75 sm:text-base lg:text-lg">{description}</p>
       ) : null}
     </div>
   )

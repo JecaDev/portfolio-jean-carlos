@@ -47,18 +47,18 @@ export default function PortfolioClient({
         <div className="absolute bottom-0 right-0 h-80 w-80 translate-x-1/3 translate-y-1/4 rounded-full bg-cyan-500/20 blur-[160px]" />
       </div>
 
-      <div className="relative mx-auto flex max-w-6xl flex-col gap-16 px-6 py-16">
+        <div className="relative mx-auto flex max-w-6xl flex-col gap-12 px-4 py-10 sm:gap-16 sm:px-6 sm:py-16">
         <section className="space-y-6">
-          <div className="flex flex-wrap items-end justify-between gap-6">
+          <div className="flex flex-col items-center gap-3 text-center sm:flex-row sm:flex-wrap sm:items-end sm:justify-between sm:text-left">
             <div>
-              <p className="text-sm uppercase tracking-[0.3em] text-white/50">
+              <p className="text-xs uppercase tracking-[0.3em] text-white/50 sm:text-sm">
                 Projetos recentes
               </p>
-              <h1 className="text-4xl font-bold text-yellow-300 sm:text-5xl">
+              <h1 className="text-2xl font-bold text-yellow-300 sm:text-4xl lg:text-5xl">
                 Portfólio Fotográfico
               </h1>
             </div>
-            <div className="max-w-md text-sm text-white/70">
+            <div className="max-w-md text-xs text-white/70 sm:text-sm">
               Navegue pelos trabalhos mais recentes e clique em um card para abrir a galeria
               completa.
             </div>
@@ -81,6 +81,11 @@ export default function PortfolioClient({
                       src={cover}
                       alt={`Capa do projeto ${project.title}`}
                       fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      quality={80}
+                      loading="lazy"
+                      placeholder="blur"
+                      blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMWUyOTNiIi8+PC9zdmc+"
                       className="object-cover transition duration-500 group-hover:scale-105"
                     />
                   </div>
@@ -108,16 +113,16 @@ export default function PortfolioClient({
         </section>
 
         <section className="space-y-6">
-          <div className="flex flex-wrap items-end justify-between gap-6">
+          <div className="flex flex-col items-center gap-3 text-center sm:flex-row sm:flex-wrap sm:items-end sm:justify-between sm:text-left">
             <div>
-              <p className="text-sm uppercase tracking-[0.3em] text-white/50">
+              <p className="text-xs uppercase tracking-[0.3em] text-white/50 sm:text-sm">
                 Conteúdo audiovisual
               </p>
-              <h2 className="text-3xl font-bold text-yellow-300 sm:text-4xl">
+              <h2 className="text-xl font-bold text-yellow-300 sm:text-3xl lg:text-4xl">
                 Portfólio em Vídeo
               </h2>
             </div>
-            <div className="max-w-md text-sm text-white/70">
+            <div className="max-w-md text-xs text-white/70 sm:text-sm">
               Cliques rápidos em vídeos horizontais com storytelling e direção criativa.
             </div>
           </div>
@@ -144,16 +149,16 @@ export default function PortfolioClient({
         </section>
 
         <section className="space-y-6">
-          <div className="flex flex-wrap items-end justify-between gap-6">
+          <div className="flex flex-col items-center gap-3 text-center sm:flex-row sm:flex-wrap sm:items-end sm:justify-between sm:text-left">
             <div>
-              <p className="text-sm uppercase tracking-[0.3em] text-white/50">
+              <p className="text-xs uppercase tracking-[0.3em] text-white/50 sm:text-sm">
                 Shorts e reels
               </p>
-              <h2 className="text-3xl font-bold text-yellow-300 sm:text-4xl">
+              <h2 className="text-xl font-bold text-yellow-300 sm:text-3xl lg:text-4xl">
                 Vídeos Verticais
               </h2>
             </div>
-            <div className="max-w-md text-sm text-white/70">
+            <div className="max-w-md text-xs text-white/70 sm:text-sm">
               Conteúdo mobile-friendly pensado para redes sociais e campanhas rápidas.
             </div>
           </div>

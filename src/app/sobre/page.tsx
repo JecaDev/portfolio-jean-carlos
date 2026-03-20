@@ -54,16 +54,16 @@ export default function Sobre() {
           transition={{ duration: 0.7 }}
           className="space-y-6"
         >
-          <p className="text-base leading-relaxed text-white/80 sm:text-lg">
+          <p className="text-sm leading-relaxed text-white/80 sm:text-base lg:text-lg">
             Olá! Eu sou <strong>Jean Macêdo</strong>, apaixonado por fotografia e vídeo profissional.
             Transformo visões e emoções em imagens que impactam e contam histórias com autenticidade.
           </p>
-          <p className="text-base leading-relaxed text-white/80 sm:text-lg">
+          <p className="text-sm leading-relaxed text-white/80 sm:text-base lg:text-lg">
             Com experiência em retratos, eventos e produção audiovisual, busco sempre inovar e
             conectar com o público, entregando qualidade visual e narrativa.
           </p>
 
-          <ul className="space-y-2 text-base text-white/80 sm:text-lg">
+          <ul className="space-y-2 text-sm text-white/80 sm:text-base lg:text-lg">
             {habilidades.map((h, i) => (
               <li key={i}>{h}</li>
             ))}
@@ -127,6 +127,11 @@ export default function Sobre() {
               alt="Jean Macêdo"
               width={360}
               height={360}
+              sizes="(max-width: 1024px) 320px, 360px"
+              quality={85}
+              loading="lazy"
+              placeholder="blur"
+              blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzYwIiBoZWlnaHQ9IjM2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMWUyOTNiIi8+PC9zdmc+"
               className="h-[320px] w-[320px] rounded-3xl object-cover sm:h-[360px] sm:w-[360px]"
             />
           </div>
@@ -135,7 +140,7 @@ export default function Sobre() {
 
       {/* Depoimentos */}
       <section className="mt-16">
-        <h2 className="text-center text-2xl font-semibold text-yellow-200">Depoimentos</h2>
+        <h2 className="text-center text-xl font-semibold text-yellow-200 sm:text-2xl">Depoimentos</h2>
         <div className="mt-8 grid gap-6 md:grid-cols-2">
           {depoimentos.map((dep, i) => (
             <div
@@ -150,7 +155,7 @@ export default function Sobre() {
         </div>
       </section>
 
-      <blockquote className="mt-16 text-center text-lg font-medium italic text-yellow-200">
+      <blockquote className="mt-16 text-center text-base font-medium italic text-yellow-200 sm:text-lg">
         "Transformando momentos em memórias inesquecíveis através da arte visual."
       </blockquote>
     </PageShell>
