@@ -8,64 +8,65 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
 
   return (
-    <header className="sticky top-0 z-30 border-b border-white/10 bg-slate-950/80 px-6 py-4 backdrop-blur">
-      {/* Logo + Nome */}
-      <Link href="/" className="flex items-center space-x-3 z-20">
-        <Image
-          src="/logo.png"
-          alt="Logo do portfólio"
-          width={36}
-          height={36}
-          className="rounded-full"
-          priority
-        />
-        <span className="text-yellow-300 text-lg font-semibold tracking-wide whitespace-nowrap">
-          Jean Carlos • Foto & Vídeo
-        </span>
-      </Link>
+    <header className="sticky top-0 z-30 border-b border-white/10 bg-slate-950/80 px-4 py-3 backdrop-blur sm:px-6 sm:py-4">
+      <div className="flex items-center justify-between">
+        {/* Logo + Nome */}
+        <Link href="/" className="z-20 flex items-center gap-2 sm:gap-3">
+          <Image
+            src="/logo.png"
+            alt="Logo do portfólio"
+            width={36}
+            height={36}
+            className="shrink-0 rounded-full"
+            priority
+          />
+          <span className="text-xs font-semibold tracking-wide text-yellow-300 sm:text-sm md:text-lg md:whitespace-nowrap">
+            Jean Carlos • Foto & Vídeo
+          </span>
+        </Link>
 
-      {/* Botão Menu Mobile */}
-      <button
-        className="text-yellow-300 md:hidden focus:outline-none z-20"
-        aria-label="Abrir menu"
-        onClick={() => setMenuOpen(!menuOpen)}
-      >
-        {/* Ícone hambúrguer */}
-        <svg
-          className="h-6 w-6"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth={2}
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          viewBox="0 0 24 24"
+        {/* Menu desktop */}
+        <nav className="z-20 hidden items-center space-x-6 text-sm font-semibold text-white/80 md:flex">
+          <Link href="/" className="transition-colors duration-200 hover:text-yellow-200">
+            Home
+          </Link>
+          <Link href="/portfolio" className="transition-colors duration-200 hover:text-yellow-200">
+            Portfólio
+          </Link>
+          <Link href="/sobre" className="transition-colors duration-200 hover:text-yellow-200">
+            Sobre
+          </Link>
+          <Link href="/servicos" className="transition-colors duration-200 hover:text-yellow-200">
+            Serviços
+          </Link>
+          <Link href="/contato" className="transition-colors duration-200 hover:text-yellow-200">
+            Contato
+          </Link>
+        </nav>
+
+        {/* Botão Menu Mobile */}
+        <button
+          className="z-20 text-yellow-300 focus:outline-none md:hidden"
+          aria-label="Abrir menu"
+          onClick={() => setMenuOpen(!menuOpen)}
         >
-          {menuOpen ? (
-            <path d="M6 18L18 6M6 6l12 12" />
-          ) : (
-            <path d="M3 12h18M3 6h18M3 18h18" />
-          )}
-        </svg>
+          <svg
+            className="h-6 w-6"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth={2}
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            viewBox="0 0 24 24"
+          >
+            {menuOpen ? (
+              <path d="M6 18L18 6M6 6l12 12" />
+            ) : (
+              <path d="M3 12h18M3 6h18M3 18h18" />
+            )}
+          </svg>
         </button>
-
-      {/* Menu desktop */}
-      <nav className="hidden md:flex items-center space-x-6 text-sm font-semibold text-white/80 z-20">
-        <Link href="/" className="transition-colors duration-200 hover:text-yellow-200">
-          Home
-        </Link>
-        <Link href="/portfolio" className="transition-colors duration-200 hover:text-yellow-200">
-          Portfólio
-        </Link>
-        <Link href="/sobre" className="transition-colors duration-200 hover:text-yellow-200">
-          Sobre
-        </Link>
-        <Link href="/servicos" className="transition-colors duration-200 hover:text-yellow-200">
-          Serviços
-        </Link>
-        <Link href="/contato" className="transition-colors duration-200 hover:text-yellow-200">
-          Contato
-        </Link>
-      </nav>
+      </div>
 
       {menuOpen && (
         <nav

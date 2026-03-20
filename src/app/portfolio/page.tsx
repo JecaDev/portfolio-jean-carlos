@@ -141,9 +141,9 @@ export default function Portfolio() {
       />
 
       <section className="space-y-8">
-        <div className="flex items-center justify-between">
-          <h2 className="text-2xl font-semibold text-yellow-200">Portfólio Fotográfico</h2>
-          <span className="text-sm text-white/60">
+        <div className="flex flex-col items-center gap-1 text-center sm:flex-row sm:justify-between sm:text-left">
+          <h2 className="text-xl font-semibold text-yellow-200 sm:text-2xl">Portfólio Fotográfico</h2>
+          <span className="text-xs text-white/60 sm:text-sm">
             {projetosComImagens.length} projetos disponíveis
           </span>
         </div>
@@ -167,6 +167,11 @@ export default function Portfolio() {
                     src={capa}
                     alt={`Capa do projeto ${project.title}`}
                     fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    quality={80}
+                    loading="lazy"
+                    placeholder="blur"
+                    blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMWUyOTNiIi8+PC9zdmc+"
                     className="object-cover object-[center_40%] transition duration-500 group-hover:scale-105"
                   />
                 </div>
@@ -187,12 +192,12 @@ export default function Portfolio() {
       </section>
 
       <section className="mt-16 space-y-6">
-        <h2 className="text-2xl font-semibold text-yellow-200">Portfólio em Vídeo</h2>
+        <h2 className="text-xl font-semibold text-yellow-200 sm:text-2xl">Portfólio em Vídeo</h2>
         <VideoCarousel videos={projetosComVideos} itemsPerPage={1} />
       </section>
 
       <section className="mt-16 space-y-6">
-        <h2 className="text-2xl font-semibold text-yellow-200">Vídeos Verticais</h2>
+        <h2 className="text-xl font-semibold text-yellow-200 sm:text-2xl">Vídeos Verticais</h2>
         <VideoCarousel videos={videosVerticais} itemsPerPage={3} />
       </section>
     </PageShell>
