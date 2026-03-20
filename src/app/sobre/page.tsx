@@ -69,7 +69,7 @@ export default function Sobre() {
             ))}
           </ul>
 
-          <div className="flex flex-wrap items-center gap-4 pt-2">
+          <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
             <a
               href={cvPath}
               download
