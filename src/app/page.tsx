@@ -59,7 +59,7 @@ export default function Home() {
               Eu sou <strong className="text-white">Jean Macêdo</strong>, fotógrafo e videomaker apaixonado por capturar momentos únicos e transformar ideias em arte visual. Explore meus projetos e entre em contato para criarmos algo incrível juntos.
             </p>
 
-            <div className="flex w-full max-w-sm flex-wrap items-center justify-center gap-2 sm:gap-3 lg:justify-start">
+            <div className="flex w-full max-w-full flex-nowrap items-center justify-center gap-2 sm:gap-3 lg:justify-start">
               {contactLinks.map(({ id, label, href, icon: Icon, className }) => (
                 <motion.a
                   key={id}

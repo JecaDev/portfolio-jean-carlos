@@ -39,6 +39,9 @@ export default function Header() {
           <Link href="/servicos" className="transition-colors duration-200 hover:text-yellow-200">
             Serviços
           </Link>
+          <Link href="/orcamento" className="transition-colors duration-200 hover:text-yellow-200">
+            Orçamento
+          </Link>
           <Link href="/contato" className="transition-colors duration-200 hover:text-yellow-200">
             Contato
           </Link>
@@ -84,6 +87,9 @@ export default function Header() {
           </Link>
           <Link href="/servicos" className="rounded-xl px-4 py-3 text-sm font-semibold text-white/80 transition-colors hover:bg-white/10 hover:text-white">
             Serviços
+          </Link>
+          <Link href="/orcamento" className="rounded-xl px-4 py-3 text-sm font-semibold text-white/80 transition-colors hover:bg-white/10 hover:text-white">
+            Orçamento
           </Link>
           <Link href="/contato" className="rounded-xl px-4 py-3 text-sm font-semibold text-white/80 transition-colors hover:bg-white/10 hover:text-white">
             Contato

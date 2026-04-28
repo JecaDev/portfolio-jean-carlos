@@ -34,29 +34,39 @@ const formatProjectTitle = (folderName: string) => {
 }
 
 export const getPhotoProjects = async (): Promise<ProjetoImagem[]> => {
-  const projetosPath = path.join(process.cwd(), 'public', 'projetos')
-  const entries = await readdir(projetosPath, { withFileTypes: true })
-  const folders = entries.filter((entry) => entry.isDirectory()).map((entry) => entry.name)
+  try {
+    const projetosPath = path.join(process.cwd(), 'public', 'projetos')
+    const entries = await readdir(projetosPath, { withFileTypes: true })
+    const folders = entries.filter((entry) => entry.isDirectory()).map((entry) => entry.name)
 
-  const projects = await Promise.all(
-    folders.map(async (folderName) => {
-      const folderPath = path.join(projetosPath, folderName)
-      const files = await readdir(folderPath)
-      const images = files
-        .filter((file) => IMAGE_EXTENSIONS.has(path.extname(file).toLowerCase()))
-        .sort((a, b) => a.localeCompare(b, undefined, { numeric: true, sensitivity: 'base' }))
-        .map((filename, index) => ({
-          filename,
-          title: index === 0 ? PROJECT_TITLE_OVERRIDES[folderName] : undefined,
-        }))
+    const projects: (ProjetoImagem | null)[] = await Promise.all(
+      folders.map(async (folderName): Promise<ProjetoImagem | null> => {
+        try {
+          const folderPath = path.join(projetosPath, folderName)
+          const files = await readdir(folderPath)
+          const images = files
+            .filter((file) => IMAGE_EXTENSIONS.has(path.extname(file).toLowerCase()))
+            .sort((a, b) => a.localeCompare(b, undefined, { numeric: true, sensitivity: 'base' }))
+            .map((filename, index) => ({
+              filename,
+              title: index === 0 ? PROJECT_TITLE_OVERRIDES[folderName] : undefined,
+            }))
 
-      return {
-        title: PROJECT_TITLE_OVERRIDES[folderName] ?? formatProjectTitle(folderName),
-        folder: `/projetos/${folderName}/`,
-        images,
-      }
-    })
-  )
+          return {
+            title: PROJECT_TITLE_OVERRIDES[folderName] ?? formatProjectTitle(folderName),
+            folder: `/projetos/${folderName}/`,
+            images,
+          }
+        } catch {
+          return null
+        }
+      })
+    )
 
-  return projects.sort((a, b) => a.title.localeCompare(b.title))
+    return projects
+      .filter((p): p is ProjetoImagem => p !== null)
+      .sort((a, b) => a.title.localeCompare(b.title))
+  } catch {
+    return []
+  }
 }
