@@ -58,13 +58,13 @@ const createImageProject = ({
 });
 
 export const projetosComImagens: ProjetoImagem[] = [
-  //createImageProject({
-  //  title: "Aniversário de 15 Anos - Alice",
-  //  folder: "/projetos/15anosAlice/",
-  //  coverTitle: "Aniversário de 15 Anos - Alice",
-  //  coverFile: "Capa.jpg",
-  //  sequences: [{ start: 2, end: 12 }],
-  //}),
+  createImageProject({
+    title: "Aniversário de 15 Anos - Alice",
+    folder: "/projetos/15anosAlice/",
+    coverTitle: "Aniversário de 15 Anos - Alice",
+    coverFile: "Capa.jpg",
+    sequences: [{ start: 2, end: 13 }],
+  }),
   createImageProject({
     title: "Ensaio de Perfil - Yuri Rafael",
     folder: "/projetos/Ensaio-Yuri/",
