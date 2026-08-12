@@ -1,7 +1,7 @@
-'use client'
+"use client";
 
-import Image from 'next/image'
-import { motion } from 'framer-motion'
+import Image from "next/image";
+import { motion } from "framer-motion";
 import {
   FaInstagram,
   FaWhatsapp,
@@ -9,33 +9,35 @@ import {
   FaLinkedin,
   FaDownload,
   FaQuoteLeft,
-} from 'react-icons/fa'
-import PageHeader from '../../components/ui/PageHeader'
-import PageShell from '../../components/ui/PageShell'
+} from "react-icons/fa";
+import PageHeader from "../../components/ui/PageHeader";
+import PageShell from "../../components/ui/PageShell";
 
 const habilidades = [
-  '📸 Fotografia profissional (retrato, eventos, editorial)',
-  '🎬 Produção e edição de vídeo',
-  '🎨 Direção criativa e color grading',
-  '🖥️ Pós-produção e tratamento de imagem',
-]
+  "📸 Fotografia profissional (retrato, eventos, editorial)",
+  "🎬 Produção e edição de vídeo",
+  "🎨 Direção criativa e color grading",
+  "🖥️ Pós-produção e tratamento de imagem",
+];
 
 const depoimentos = [
   {
-    nome: 'Marina A.',
-    texto: 'A sensibilidade do Jean ao capturar momentos foi além do esperado. As fotos do meu evento ficaram incríveis!',
+    nome: "Jamini A.",
+    texto:
+      "A sensibilidade do Jean ao capturar momentos foi além do esperado. As fotos do aniversário da minha filha ficaram perfeitas!",
   },
   {
-    nome: 'Noelice S.',
-    texto: 'Trabalho de excelência, feito com muitíssimo profissionalismo e muito amor também. Obrigada por ajudar a eternizar os melhores momentos da minha família.',
+    nome: "Noelice S.",
+    texto:
+      "Trabalho de excelência, feito com muitíssimo profissionalismo e muito amor também. Obrigada por ajudar a eternizar os melhores momentos da minha família.",
   },
-]
+];
 
-const instagramUser = 'gradedbyjean'
-const whatsappNumber = '+5571988601554'
-const email = 'jeanmacedo1302@gmail.com'
-const linkedinUser = 'jeancarlos1302'
-const cvPath = '/curriculo-jeanmacedo.pdf'
+const instagramUser = "gradedbyjean";
+const whatsappNumber = "+5571988601554";
+const email = "jeanmacedo1302@gmail.com";
+const linkedinUser = "jeancarlos1302";
+const cvPath = "/curriculo-jeanmacedo.pdf";
 
 export default function Sobre() {
   return (
@@ -55,12 +57,14 @@ export default function Sobre() {
           className="space-y-6"
         >
           <p className="text-sm leading-relaxed text-white/80 sm:text-base lg:text-lg">
-            Olá! Eu sou <strong>Jean Macêdo</strong>, apaixonado por fotografia e vídeo profissional.
-            Transformo visões e emoções em imagens que impactam e contam histórias com autenticidade.
+            Olá! Eu sou <strong>Jean Macêdo</strong>, apaixonado por fotografia
+            e vídeo profissional. Transformo visões e emoções em imagens que
+            impactam e contam histórias com autenticidade.
           </p>
           <p className="text-sm leading-relaxed text-white/80 sm:text-base lg:text-lg">
-            Com experiência em retratos, eventos e produção audiovisual, busco sempre inovar e
-            conectar com o público, entregando qualidade visual e narrativa.
+            Com experiência em retratos, eventos e produção audiovisual, busco
+            sempre inovar e conectar com o público, entregando qualidade visual
+            e narrativa.
           </p>
 
           <ul className="space-y-2 text-sm text-white/80 sm:text-base lg:text-lg">
@@ -81,7 +85,7 @@ export default function Sobre() {
 
             <div className="flex items-center gap-3 text-2xl">
               <a
-                href={`https://wa.me/${whatsappNumber.replace(/\D/g, '')}`}
+                href={`https://wa.me/${whatsappNumber.replace(/\D/g, "")}`}
                 target="_blank"
                 rel="noreferrer"
                 className="rounded-full border border-white/10 bg-white/5 p-3 text-green-400 transition hover:-translate-y-1 hover:text-green-300"
@@ -140,7 +144,9 @@ export default function Sobre() {
 
       {/* Depoimentos */}
       <section className="mt-16">
-        <h2 className="text-center text-xl font-semibold text-yellow-200 sm:text-2xl">Depoimentos</h2>
+        <h2 className="text-center text-xl font-semibold text-yellow-200 sm:text-2xl">
+          Depoimentos
+        </h2>
         <div className="mt-8 grid gap-6 md:grid-cols-2">
           {depoimentos.map((dep, i) => (
             <div
@@ -149,15 +155,18 @@ export default function Sobre() {
             >
               <FaQuoteLeft className="absolute left-4 top-4 text-xl text-yellow-400 opacity-60" />
               <p className="mb-4 pl-6 text-base italic">{dep.texto}</p>
-              <p className="text-right text-sm font-semibold text-yellow-200">— {dep.nome}</p>
+              <p className="text-right text-sm font-semibold text-yellow-200">
+                — {dep.nome}
+              </p>
             </div>
           ))}
         </div>
       </section>
 
       <blockquote className="mt-16 text-center text-base font-medium italic text-yellow-200 sm:text-lg">
-        "Transformando momentos em memórias inesquecíveis através da arte visual."
+        "Transformando momentos em memórias inesquecíveis através da arte
+        visual."
       </blockquote>
     </PageShell>
-  )
+  );
 }
